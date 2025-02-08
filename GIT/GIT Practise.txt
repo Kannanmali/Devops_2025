@@ -1,0 +1,765 @@
+Day 1
+==================================================================
+GIT HISTORY:
+===========
+It came from a linux development community.
+Version Controlling
+===========================
+This is the process of maintaining multiple versions of code
+All the team members upload their code(checkin) into a remote
+Version Controlling system(VCS).This VCS accepts the code
+uploads from multiple team members and integrates that as one 
+project.Next time when the team members download the code they
+will be able to access the code created by the entire team.
+
+VCS's also preserve the older and later versions of the code
+so that at any point of time we can switch between whichever
+version we want
+
+VCS's also keep a track of who is making what kind of changes
+at what time
+Commit id:
+—-------- When there is changes made (40 long character) unique id created and stored by git. 
+This id contains who created, what and when did.
+==================================================================================================
+VCS's are of 2 types
+
+1 Centralised Version Controlling System
+2 Distributed Version Controlling System
+
+1. Centralised Version Controlling System
+
+Here we  have a central repository into which the team members
+upload the code and all the features of version controlling happen
+only on this remote server.Eg: SVN
+
+2. Distributed Version Controlling System: GIT
+
+Here we have a local repository into which the code is initially 
+uploaded where version controlling happens at the level of
+individual team members and later it will be uploaded to a remote
+server where version controlling happens at the level of the entire
+Team
+============================================================================================
+Repository: it is a place where we can store and maintain all files of one project.
+Workspace: it is nothing but directory folder in which able to see files corresponding 
+to particular repository and 
+this is the place where you will do all the changes also called as local machine.
+
+====================================================================
+Git on the local machine uses three section
+working dir,stagging area(git add) and local repository (git commit)
+
+Working Directory:
+
+This is where you create and edit your files.
+Files here are untracked (Git doesn’t know about them yet).
+
+Staging Area:
+
+This is like a waiting room.
+Files from the working directory go here before being saved in Git.
+Files here are staged or indexed (ready to be committed).
+
+Local Repository:
+
+This is where Git keeps track of your versions.
+Files here are committed (saved in Git’s history).
+
+
+We commit to save changes in Git before pushing to GitHub.
+
+Why commit?
+✅ Tracks changes (like saving progress)
+✅ Allows rollback (go back if needed)
+✅ Needed for push (GitHub only accepts committed changes)
+
+============================================================================
+ls .git   -(git uses this 4 for tracking the entire repo).
+1. refs
+2. obejct-everyfile we create inside git is tracked by objects.
+3. hooks(folder)-eg:somebody unintentionally commiting some pwd.we can prevent this by hooks.
+4. config - configure git credentials.
+
+.git - it's a dir (supportive files used to process data from local to repo).
+
+=======================================================================
+Setting up username and emil globally
+
+1.git config --global user.name "sai krishna"
+git config --global user.email "intelliqittrainings@gmail.com"
+
+2.To see the list of configuration done
+git config --global --list
+=================================================================================
+create GIT repo- "git init" initialsed Git repo. Intiz empty git repo.
+
+1.ls -la shows hidden files.(. dot- means everything).
+
+2.Touch file1   Cat file  vim or vi  (I-insert, esc, :wq)   w=save  q-quit.   cat > f6  cat >> f7
+
+3.Git status
+4.git add .
+5. git commit -m "created file1 file2 file3"
+6.git log  --oneline
+7.To bring files back from stagging area to untracked section	
+git rm --cached filename
+  or
+  git reset filename
+============================================================================
+                         Git ignore	
+
+1. .gitignore:This is a special configuration file which is used
+to hide the private files info.Any file whose name is mentioned
+in .gitignore will no longer be accessed by git
+
+1.  touch f1  f2 f3 f4 f5
+2. Create .gitignore and store the above 5 file names in it
+3. cat > .gitignore
+  f1
+  f2
+  f3
+  f4
+  f5
+  To come out of cat command press ctrl+d  
+4. Git status 
+all the files can't see in the untracked files. no longer access by the git.
+=========================================================================================
+1. Ctrl+L =Clear the screen.
+2.  git remote add origin https://github.com/Kannanmali/test00.git
+3. sending file is simple 
+4. git push origin master.
+======================================================================================
+
+
+Push: To send your local changes to GitHub.
+Pull: To fetch and merge changes from GitHub into your local repository.
+-----------------------------------------------------------------------------
+                          Branching:
+
+Branching:This is a feature of git using which we can create seperate branches
+for different functionality and later merge them with the main branch
+also known as the master branch.This will help in creating the code in
+an uncluttered way
+
+Need to commit something in master to  create the new branch and see the branch details: IMP:
+
+1. git branch - see the branch list.
+2. git branch devops -  create
+3. git checkout  devops - to enter into the branch.
+4. Source code files(Auto copied) from master to the branch.
+5. ll - long listing.
+5. touch ngnix.com
+6. git status  , git add  and commit for the file created in the branch.
+
+7. the same ngnix.com will be not there in the master.
+8. Git checkout master.
+9. git merge devops  (file from the devops branch copied to the master).
+==============================================	
+To delete a branch that is merged
+9.1. git branch -d  branch_name.   Delete the branch.
+
+To delete a branch that is not merged
+  git branch -D branch_name
+  This is also known as hard delete
+
+
+10. If u create  new repo.
+
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/Kannanmali/mali.git
+git branch -M main
+git push -u origin main
+
+git push origin master(branch) -  anything to  send the data to github.
+
+==========================================
+git branch -M main
+1. This renames your current branch to main.
+
+If you were on master, it renames master to main.
+The -M flag forces the rename, even if main already exists.
+=====================
+2️⃣ git push -u origin main
+👉 This pushes your main branch to GitHub and sets it as the default for future pushes.
+The -u (upstream) links your local main branch with the remote main branch, so next time, you can just use:
+git push  instaed of git push origin main
+
+
+================================
+1.✅ Steps to Push Your Local Files to GitHub
+1.git status(1️⃣ Check if your Git repo is initialized (inside your project folder)
+2.If it says "Not a git repository", first initialize it:
+
+git init
+
+2️⃣ Link your local repo to GitHub:
+(Only if not already linked. Replace <your-repo-url> with your GitHub repository link.)
+
+git remote add origin <your-repo-url>
+
+3.git add .  (Add your files for tracking)
+git commit -m "First commit"  (Commit your changes)
+
+5️⃣ Push your code to GitHub (master branch)
+git push -u origin master
+
+1️⃣ Modify files
+2️⃣ git add . (Stage changes)
+3️⃣ git commit -m "message" (Save changes)
+4️⃣ git push (Send to GitHub)
+
+
+======================================================
+*Another person edited the nginx.com in github.
+
+But I see the file cat file name but it's not in our system.
+
+ 1. git fetch origin -  CR what the files got  changed.   But inside file we can't see to see that use
+ 2. git pull origin  - 116 lines got changed.. Can be seen using cat file command.
+ 
+ 
+ git fetch origin → Gets updates but doesn’t apply them.
+git pull origin main → Gets updates and applies them (now you see the changes).
+
+=======================================================================================
+In git hub master <<<<<< branch   (from branch needs to send files to master)
+
+1. pull req - new pull req-creat and finally merge confirmed.  (follow  the further in the notes).
+===========================================================================================================
+Project structures:
+https://github.com/bodaraju668/maven-sample-project
+1. inside src/main we have https://github.com/bodaraju668/maven-sample-project/tree/master/src/main/java/com/yourorganization/maven_sample
+please refer the notes for further.
+=======================================================================
+Yes, to push changes to GitHub, you need to be on the branch that you want to push.
+
+Now i need to use this project:
+1. If i did  git clone and make changes i can't send it to my repo(push it to my repo)
+
+I have to  do is 1. fork
+Fork means to make a copy of the repository (the one being forked) into my own github account.
+
+2. git clone  - cd go inside see the ll files.
+git status
+git add .
+commit 
+git  push origin master. to CR.
+========================================================================
+
+
+
+                                                Branching Strategy
+												
+1.Main/Branch:Main or master-t holds production-ready code-stable and idel should runing 
+code-in prod enev.
+
+2. Developmet or dev or devlop branch.
+All on gng devlopment work takes place here.
+New features and bug fixes are merged into this branch.
+
+
+3.Feature Branches:
+Purpose: Each new feature or task gets its own branch, created from 
+the develop branch.
+ Developers work on these branches and merge them 
+back into the develop branch when the feature is complete.
+
+4.QA Branchor tetsing:
+ Once features are considered complete in the develop branch, they 
+are merged into the qa branch for testing.
+
+
+5.Pre-Production Branch-ppd or staging:
+This branch is used to simulate the production environment closely. 
+After successful QA testing, code is merged from the qa branch to 
+the ppd branch for final validation before deployment
+
+6.Production Branch-prod or release:
+ Once the code is thoroughly tested in the ppd environment and 
+ready for deployment, it's merged into the prod branch and deployed to the 
+production environment.
+
+7.Disaster Recovery Branch:
+Name: dr or backup
+o Purpose: This branch holds code that is identical to the currently deployed 
+production code. It's useful for disaster recovery scenarios, allowing rapid 
+deployment of the latest stable code in case of critical issues.
+===================================================================================
+Real Time: PR pull req-want to merge changes from develop branch to main.
+we raise PR we mentioned describtion what and why changes are done.
+After PR raise- reviwere or sr dev or articht of the project-certify changes crct or not.
+once he apprves changes-the he will approve PR and code gets merge.
+For each env we have deiticated branch as well. 
+----------------------------------------------------
+client says i want to add some feature-dev create new branch called 1.feature/123 - dev write SC in feature branch
+then he tested in local system all good - he raised PR to merge changes in dev branch-upon approval
+changes deployed to dev env.
+
+1.dev - lowest enev to see code is running or not.
+
+2.merge dev to qa. (running diff test cases, unti test)all test cases like stage enev.
+
+3.merge to PPD(pre prod) its like clone of prod env(means live enev)(same config same enev like prod)
+app access by public.. we test in same enev as like live or real..
+
+4.Once all good merge and deploy to prod-once deploy merge to DR(DR and prod) is sysnc..
+sync bcz DR-desaster recovery-if any things goes wrong with prod deploymnent- we can redirect our app to DR.
+no downtime- public can access-for temp time.
+--------------------------------------------------
+In QA we got some bugs - we create bugfix branch--dev wrote SC to fix bug and merge back to QA.
+
+eg:rarlly we get some issues in prod enev - we create hotfix branch- bcz immeadilty needs to fix.
+dev is fix issues then back to prod and deploy into prod...then merge to DR.
+SInmce DR havng code-that has bug and hot fix,, we should merge it to dev.
+
+bcz dev should have the lastest code.
+
+NOte:just 2 k8s(here no DR bcz in prod something happne QA env temp we make it public)
+
+============================================================================================
+Branching staregy: 2
+
+let's say - 5 enev- we are deploying app to k8s-all of them has K8s cluster.
+why all are using?? why not 1 cluster bcz we can create multi name space ryt.
+but that one clsuter goes down eveything will get down.
+
+for that we have thses many k8s-but all project don't have budget to maintain these many k8s-not possibel.
+we cteared 2 k8s- 1 is QA(dev,QA,PPD)all env are sameif we deploy app in single cluster. 
+
+QA branch- we have platform we want to upgrade it - new SC added in feature branch-after we create 
+new branch-RC1 which is Relase candidate 1-thse brach has 1st code that we deploy-
+now using relase RC1 we deploy app to QA-we do all test once all good-we found some bug-bugfix and 
+merge back...2-RC2-FOR finding bugs we do functiobal testing(its done when app is deploy)
+like user access, working or not, we fix bug generate RC2 and deploy back using RC2---------again 
+bugs fixit create RC3--againg we found bug....till Rc4 all are fixed..
+
+then we merge this code to prod and deploy to prod enev...
+
+just 2 k8s(here no DR bcz in prod something happne QA env temp we make it public)
+bcz prod issues ususaly fix in 1 hr..
+
+and 2 is prod....  
+
+
+==================================================================================
+
+1. Merge, rebase and cherrypick
+
+A. Merge:
+Merging always happens based on the time stamp of the commit.
+
+In master create files a b and commit.
+In branch create files c d and commit.  
+
+ git log --oneline
+
+
+checkout master create e and f commit.
+
+Use git merge (branch_name)
+ 
+=========================================================
+Rebase:
+
+Rebase is also called a "fastfoward merge"  and this used when
+we want the commits from a branch to be projected as the top most 
+commits.
+
+follow prev till git log  --oneline.
+
+To rebase test with master
+  git checkout test           Go inside the test branch
+  git rebase master           Rebase with master
+  git checkout master         go to master
+  git merge test              merge it.
+
+  git log --oneline
+
+
+
+1.master has changes A, B, C.
+kannan has changes D, E.
+
+Before rebase:
+master: A---B---C  
+kannan:     D---E  
+
+After rebase:
+master: A---B---C  
+kannan:         D---E  
+
+
+git checkout kannan
+git rebase master
+Now your branch (kannan) has the latest master changes first, followed by your changes.
+Rebase: Moves your changes to the latest version of another branch to make the history clean.
+
+=========================================================================================
+
+cherry pick:
+git cherry-pick lets you take a specific commit from one branch and 
+apply it to your current branch.
+
+Cherry-pick: Copies specific commits from one branch and applies them to your current branch.
+
+This feature allows us to selectively pick only certain
+commits and add them to the master branch
+
+1.On master Commit A: "Initial commit"
+
+2.feature branch:
+Commit B: "Add feature B"
+Commit C: "Add feature C"
+Commit D: "Fix bug D"
+Commit E: "Improve feature E"
+git log --online
+
+git checkout master
+git cherry-pick <commit_id_B> <commit_id_D>
+Commits B and D are now part of your master branch!
+
+
+===============================================================================
+
+Git Revert:
+
+It creates a new commit that reverses the changes made in a previous commit.
+This lets you undo changes without deleting history.
+
+
+You make a change:
+Commit 1: Add f4.txt (you create a new file)
+
+You make another change:
+Commit 2: Update f4.txt (you change the content of the file)
+
+You realize the update was wrong and want to go back to the original file.
+
+To undo the update, you run:
+
+git revert HEAD
+
+
+Now, Git creates a new commit that "reverses" the update, and 
+your file goes back to the state from Commit 1. So, you have:
+
+Commit 1: Add f4.txt
+Commit 2: Update f4.txt
+Commit 3: Revert "Update f4.txt"
+The file is back to how it was after Commit 1, but you still have a record of reversing the change.
+
+---------------------------------------------------------------------------------------------------
+Git reset:
+
+This is used to toggle between multiple versions of the code
+
+1. Hard reset
+
+Here’s a simple example with the **hard reset** explained:
+
+---
+
+### **Scenario:**
+
+1. You made 3 commits on `file.txt`:  
+   - **Commit `a`**: Add Line 1  
+   - **Commit `b`**: Add Line 2  
+   - **Commit `c`**: Add Line 3  
+
+   Your commit history looks like this:  
+   ```
+   a: Add Line 1  
+   b: Add Line 2  
+   c: Add Line 3  
+   ```
+
+2. **You decide to reset to commit `b`**:  
+   Run:  
+   ```
+   git reset --hard <commit_id_of_b>
+   ```
+
+---
+
+### **What Happens After the Hard Reset:**
+
+- **Commit `c`** is **deleted** from history.  
+- Your commit history now looks like this:  
+  ```
+  b: Add Line 2  
+  a: Add Line 1  
+  ```
+
+- **File `file.txt`** will now show the content from **commit `b`** (which is "Line 1" + "Line 2").
+
+---
+
+### **Key Points:**
+
+- Only **commit `c`** is gone.
+- Your files match the state of **commit `b`**.
+- Nothing becomes "untracked" — the file looks like it did in **commit `b`**.
+
+Hard rest:
+
+Removes commit c from history.
+Deletes the changes from commit c (both from history and the working directory).
+File: Only Line 1 and Line 2 remain, Line 3 is completely erased.
+
+
+---------------------------------------------------------------------
+
+Soft reset:
+
+Soft Reset (git reset --soft <commit_id_of_b>):
+Removes commit c from history.
+Keeps changes from commit c staged, so ready to commit again.
+File: Line 1, Line 2, and Line 3 are in the staging area.
+
+
+=========================================================
+mixed:
+
+Removes commit c from history.
+Keeps changes from commit c in the working directory but unstaged (not ready for commit yet).
+File: Line 1, Line 2, and Line 3 are in the file, but Line 3 is unstaged.
+
+-------------------------------------------------------------------------------
+
+Soft reset: Removes commits but keeps staged changes.
+Mixed reset: Removes commits and keeps unstaged changes in the working directory.
+Hard reset: Removes commits and deletes changes from the working directory.
+
+
+=======================================================
+
+GIT squash:
+===========
+Squash combines small commits into a bigger commit for a cleaner history.
+You use git rebase -i HEAD~4 to modify the last 4 commits, excluding the first commit (a).
+
+
+You have 5 commits = a,b,c,d,e 
+You want to combine commits c and d into commit e.
+
+Steps:
+
+1.Run the rebase command to start modifying the last 4 commits (from b to e):
+git rebase -i HEAD~4
+HEAD~4 means you’re working with the last 4 commits (excluding commit a).
+
+
+Editor opens with a list of commits:
+pick <commit_id_b> Commit b
+pick <commit_id_c> Commit c
+pick <commit_id_d> Commit d
+pick <commit_id_e> Commit e
+
+
+Change "pick" to "squash" for commits c and d:
+pick <commit_id_b> Commit b
+squash <commit_id_c> Commit c
+squash <commit_id_d> Commit d
+pick <commit_id_e> Commit e
+
+This tells Git to combine commits c and d into e.
+
+Save and exit the editor.
+
+Git will ask you to write a new commit message for the combined commit. 
+You can keep it or change it.
+
+After finishing, your commit history will look like this:
+Commit a: Initial commit
+Commit b: Small change
+Commit e: Big change (with changes from c and d combined)
+
+
+
+Git stashing
+======================
+Git stash is like a temporary shelf where you can put your changes, 
+so you can work on something else and come back later.
+
+Git stash is for temporarily saving your changes when you're not ready to commit.
+
+
+To stash all the files present in the stagging area
+git stash 
+
+To stash all files present in stagging area and untracked section
+git stash -u
+
+To stash all files present in stagging area,untracked section and .gitignore
+git stash -a
+
+To see the list of stashes
+git stash list
+
+To unstash a latest stash
+git stash pop
+
+To unstash an older stash
+git stash pop stash@{stashno}
+======================================================================
+Git tagging
+================
+Git tagging is like putting a sticker on important commits, 
+such as those for releases or milestones, to easily find them later.
+
+Tags are classified into 2 types
+1 Light weight tags: Just a name for a commit, no extra info.
+
+2 Annotated repo : Includes extra details like a message, date, and author.
+
+
+Light weight tags
+======================
+
+To create a light weight tag to the latest commit
+git tag some_tag_name
+
+To create a light weight tag to an older commit
+git tag some_tag_name older_commit_id
+
+To create an annoted tag to the latest commit
+git tag -a "some_tag_name" -m "some msg related to the tag"
+
+To create an annoted tag for an older commit
+git tag -a "some_tag_name" -m "some msg related to the tag" older_commit_id
+------------
+To see the list of all tags
+git tag
+
+To push the tags into remote github
+git push --tag/tags (then only tags will display on remote repo)
+
+To delete a tag locally
+git tag -d tagname
+
+To delete a tag from remote github
+git push origin :tag_name
+
+=======================================================================================================
+
+
+
+Hints:
+—----
+1 Merge, rebase and cherrypick
+2 .gitignore and stash
+3 Clone, fetch and pull.
+4 Git reset,  reflog
+5 Git squash
+
+6 Git tag
+
+
+
+
+
+
+
+
+
+
+
+
+
+Trouble shooting:
+===========================================================================
+Issue 1: Merge Conflicts
+
+Conflict happens when both branches change the same part of a file.
+Fix it by opening the file, choosing the changes you want, and then committing it.
+
+1. Create a file on master branch
+Create a file called file.txt with content:
+Line 1: Hello from master
+2. Commit changes on master branch
+git add file.txt
+git commit -m "Master branch commit"
+3. Create a new branch feature
+git checkout -b feature
+4. Modify file.txt on feature branch       (modify the same file.txt created in master)
+Line 1: Hello from feature
+5. Commit changes on feature branch
+6. Switch back to master and merge feature branch
+git merge feature
+-----------------------
+7. Conflict occurs
+<<<<<<< HEAD
+Line 1: Hello from master
+=======
+Line 1: Hello from feature
+>>>>>>> feature
+-----------------------
+8. Resolve the conflict
+Open file.txt, choose which line to keep or combine them. For example:
+Line 1: Hello from feature
+-----------------
+9. Mark the conflict as resolved
+git add file.txt
+-----------------
+10. Commit the resolution
+git commit -m "Resolved merge conflict"
+The conflict is resolved, and the feature branch is merged into master.
+
+----------------------------------
+
+
+Issue: Detached HEAD State 
+If you check out a commit, you're not on any branch anymore (Detached HEAD).
+If you want to keep your work, create a new branch.
+
+1.git checkout abc123
+Now you are in Detached HEAD. You are not on any branch, just on a specific commit (abc123).
+------------------------
+If you make changes and want to save them, you can’t commit them to any branch. 
+To avoid losing them, create a new branch:
+2.git checkout -b new-branch
+This creates a new branch called new-branch from where you are (at commit abc123).
+
+--------------------------------------------
+Issue 3:  Untracked files are not yet added to Git.
+Use git add to start tracking them.
+
+$ git status
+# Untracked file: new_file.txt
+$ git add new_file.txt
+# Add new_file.txt to the staging area
+--------------------------------------------------
+Issue 4: Undoing Mistakes (git reset) You made a commit and need to undo it.
+
+ git log
+# Find the commit hash you want to reset to
+$ git reset --hard abc123
+# Reset to commit abc123, discarding changes after it
+------------------------------------------------------
+ Incorrect Commit Message You made a commit with a wrong or 
+incomplete message
+ git commit --amend
+# Opens a text editor to modify the commit message
+
+
+git commit --amend lets you edit the last commit message.
+It opens a text editor where you can change the message and save.
+-------------------------------------------------
+Issue 10: Remote Repository Not Found (git remote) You want to connect your 
+local repository to a remote, but it's not working.
+
+$ git remote -v
+# Check existing remotes
+
+$ git remote add origin <repository_url>
+# Add a new remote named "origin"
+---------------------------------------------------------------
+
+
+
+
+
+
+
