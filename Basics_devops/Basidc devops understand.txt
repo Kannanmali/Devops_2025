@@ -1,0 +1,44 @@
+
+dev-writes code like 2025 goals and should save in DB and to reach the world wide (www).
+
+If student writes code in office-to show dem in office-its working on my machine but not in clinet machine.
+So if we create link and that app will work on any machine called devops.
+
+Dev= devloper code.
+Ops=scale app, put out for the world..
+development operations== sending the app to world in fast..
+devops is culture--less time == dev code send to world wide...fast and secure..
+------------------------------------------------------------------------------------
+why??
+we use chatgpt--we message and we get red signal-- too many signal server can't handle..
+(2022)-- in deeepseek.. = send some msg = if something we see like network error...like that (2022)
+still its was happening... But they have devops and cloud practise.. they send app world with LB cloud support..
+So now no issues..
+
+If coder writes - deepseekk-- then devops and cloud demand gonna incr..
+1.After deepseek- Alibaba - qunmax-- same issue - it can't scale..
+So rthey mneed devops and cloud..(alibab-aws-google etcc AI--so AI gomnna speed same time devops getting high)
+to run world wide - infra scalabilty,,,etc...
+If we have skills- we can transfer business....
+===============================================================================================
+How to learn??
+1.devops - cluure mindset methedology..Learn 1 cloud like AWS.
+
+1.dev-write code(put it in github)-code working in local..
+2.So that code (github)should be work in all machines(LIKE IN LINUX).
+we need to run the code - we need tool doicker- docker build the app..
+Once docker build next is test-- then we use testing like eg sonar qube to test the app..
+sonarauber- code quality..
+3.finally--once test then deploy-- to the VM or compute like a server..(or a computer).----- so that www can access.
+
+---------------------------------------------------------------------------
+1.code---build---test--deploy..(whener code build test or deploy)== Infinity called devops.
+2. when we store code called code storage...
+
+code build- aws 
+sonaraube--test aws also available..
+deploy- aws ec2 or eks (k8s) or azure VM or Azure AKS..Or own server..
+So learn 1 server - just name gonna change - tech and culture metholdgy are same..
+
+
+----------------------------------------------------------------------------------------------

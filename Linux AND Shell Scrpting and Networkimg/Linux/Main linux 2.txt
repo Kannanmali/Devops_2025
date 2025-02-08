@@ -1,0 +1,988 @@
+Key words:
+| : pipe == Passes the file's content to the next command.
+S/W=Package.
+Whoami- to see current user
+* :se nu   - helps to set line no's.
+* wildcard symbol for variable lenghth eg; *.txt refer to all files with txt extension.
+? wildcard sym - refer signal charecter eg:Doc? docx can refer to doc1 docx docA docx etc.
+								 						   
+														   Main commands:
+1.sudo su  - normal to root.  
+sudo su username  -root to normal.
+-------------------------------------------------------------------------------------
+(we are in ubuntu user-we an't de admin vbcz we might delete can't retrive back unless we have moubted volume
+called snashot)== file will lost..use personal user..some timer we need admin access.
+
+                                             (File and Directory Management:
+1.Create file?
+touch-Creates an empty file.
+cat > filename.txt-- Creates a file and lets you type content. Press CTRL+D to save and exit.
+---------------------------------------------
+2.Open and view the file:
+
+open myfile.txt
+This opens the file myfile.txt with the default text editor.
+
+cat -b myfile.txt
+This will display the contents of myfile.txt, numbering only the non-blank lines. 
+Note: Blank lines are not numbered.
+
+cat - Displays the content of the file in the terminal.
+nano - Opens the file in the nano text editor for viewing and editing.
+vi - Opens the file in the vi text editor.
+vim - Opens the file in the vim text editor (an improved version of vi).
+-------------------------------------------------------------
+3. Go inside a file (edit/view):
+In nano, you can directly type and edit the content.
+In vi or vim:
+Press i to enter Insert Mode and start typing/editing the file.
+Press Esc to exit Insert Mode.
+Type :w to save the file.
+Type :q to quit.
+Type :wq to save and quit.
+Type :q! to quit without saving.
+
+-------------------------------------------------------------------------------------------------
+                                   Copying Files:
+1.mkdir directoryname   create dir
+3.cp - copy a file or dir.
+4.Copy file to directory
+Ex: cp sourcefilename destinatondirectoryname
+
+5.Copy directory from one location to other
+Ex: cp -rvfp dirname destinationdirectoryname
+
+41)Cp /path/*.*(all files) /newdestinationpath/
+
+42) To copy an entire folder and its sub folder and files:
+Cp -R /path/*.*(all files) /newdestinationpath/
+---------------------------------------------------------------------------------
+cp -r Y Z copies directory Y to Z (including all files and subdirectories).
+
+cp -r folder1 folder2
+If folder2 exists, folder1 is copied inside it.
+If folder2 does not exist, folder1 is copied as folder2.
+
+-r means copy everything inside the folder (files and subfolders).
+
+============================================================================= 
+                                                   File Navigation:
+												   
+PWD - Present Working Directory
+1.Absolute path- complete path from the start of the actual file system
+from root directory (/) . eg:complete path
+
+2.Relative path- Relative path is defined as the path related to the present
+working directly(pwd)
+It starts at your current directory and never starts with a / .
+eg: cd name
+
+32).(a single dot) - this represents the current directory.  
+33)..(two dots) - this represents the parent directory
+
+
+cd/etc = to the /etc dirc
+
+If you're in /home/user/docs and run cd ../.., you'll move to /home.
+
+cd . - Stay in the same directory.
+Example: If you are in /home/user, it stays in /home/user.
+
+cd .. - Move up one directory.
+Example: If you are in /home/user, it goes to /home.
+
+cd ../.. - Move up two directories.
+Example: If you are in /home/user/docs, it goes to /home.
+
+cd / - Go to the root directory.
+Example: If you are in /home/user, it goes to /.
+
+cd ~ - Go to the home directory.
+Example: If you are in /var/log, it goes to /home/user (your home folder).
+---------------------------------------------------------------
+compare                          
+cmp A B  
+cmp file1.txt file2.txt
+o/p
+
+If files are identical: No output.
+
+If files are different: file1.txt file2.txt differ: byte X, line Y
+If a file is missing: cmp: file1.txt: No such file or directory
+
+
+cmp (compare) checks two files byte by byte:
+No output if files are the same.
+Shows first difference (byte, line) if different.\
+
+Byte 5 → The 5th character in the file where the difference is found.
+Line 1 → The difference is in the first line.
+---------------------------------------------
+diff A B compares two files line by line:
+No output if files are the same.
+Shows differences if files are different.
+diff file1.txt file2.txt
+O/p
+
+2c2
+< Hello
+---
+> Hullo
+(Line 2 changed: "Hello" → "Hullo")
+
+
+------------------------------------------------------- 
+                                   Moving Files:
+
+11) Moving files from one location to other (cut and paste)
+mv filename destinationdirectoryname
+
+12) Moving directory from one location to other
+Ex: mv dirname destinationdirectorynam
+
+13) Renaming a file or directory
+Ex: mv oldname newname
+--------------------------------------
+14) Removing/ deleting a file
+Ex: rm filename or
+rm -f filename (without prompting)
+
+15) Removing an empty directory
+Ex: rmdir dirname
+
+16)Removing a directory with files or directories inside
+Ex: rm -rf dirname
+--------------------------------------------------------
+                                                17) Listing files and directories
+Listing files- ls
+Long listing of the files - ls -l or ll
+ls -a also display hidden files/folders. (may combined with ls -l to form ls -al).
+
+List all the files with given extension - ls *.txt
+Ex: for text file - ls *.txt
+
+
+-----------------
+To see permission of particular directory- ls -ld dirname
+To see permission of particular file - ls-l filename
+
+-----------------------------------
+
+ls -lrt   (list files and folders with properties)
+File permissions (e.g., -rw-r--r--).
+Number of links (e.g., 1).
+Owner name (e.g., root).
+Group name (e.g., root).
+File size in bytes (e.g., 203).
+Modification date and time (e.g., Jan 12 06:14).
+File name (e.g., samplescript.sh).
+------------------------------------------------------------------------------------
+ln -s A S creates a symbolic link:We use ln -s to create shortcuts to files or folders, 
+so we can access them easily from different places without copying them.
+
+A is the original file or directory.
+S is the symbolic link (shortcut) to A.
+
+ln -s /home/user/file.txt /home/user/link_to_file
+
+
+link_to_file points to file.txt. Opening link_to_file will open file.txt.
+-----------------------------------------------
+man- means manual.
+Like "man ls"
+It has all the info like all the info about the commnad..
+Man cmd is manual for any command for any command for you ref
+----------------------------------------------------------------------------
+Why Use Debug Mode?
+It shows each command and its output while your script runs.
+Problem with echo for Debugging:
+Adding echo after every step in a long script (e.g., 1000 lines) is too much work.
+
+1.Set -x It helps you see every step of the script to fix any problems.
+-----------------------------------
+                                           Process mgmnt:
+A process is an instance of a running program.
+When you open a game, the game becomes a process running on your computer.
+
+1.Print all process in VM
+whatching video in laptop.. like I watching youtube(this is one process),chrome,System process(O/s has lots of 
+programs in C drive)Now 3 process are running/// on VM lots of process running.
+
+2.ps -ef (ps-processes) e-details of process f-full format.
+root        1959       1  4 11:41 ?        00:00:09 /usr/sbin/rngd -f -x pkcs11 -x nist
+Who runs it? root (system admin).
+What is the program? /usr/sbin/rngd (helps make random numbers for encryption).
+When did it start? At 11:41.
+How long has it run? 9 seconds (00:00:09).
+Parent Process? Started by systemd (PPID=1).
+This process is part of the Linux system, helping with securit
+--------------------------------
+ Each process has a unique Process ID (PID).
+1.PS- display info about the running process.
+ps -ef (ps-processes) e-details of process f-full format.
+
+2.top: Display live sys resources usage.
+
+top - 12:34:56 up 1 day,  2:34,  3 users,  load average: 0.00, 0.01, 0.05
+Tasks: 123 total,   1 running, 122 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.3 us,  0.1 sy,  0.0 ni, 99.5 id,  0.0 wa,  0.0 hi,  0.1 si,  0.0 st
+KiB Mem :  2048000 total,  1024000 free,   512000 used,   512000 buff/cache
+KiB Swap:  1024000 total,  1024000 free,        0 used.  1536000 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 1234 user      20   0  123456  12345   1234 S   0.3  0.6   0:01.23 process_name
+ 5678 user      20   0  234567  23456   2345 S   0.1  1.2   0:02.34 another_process
+
+Summary:
+
+The computer has been on for 6 minutes.
+2 users are logged in.
+The system is not busy (load average is very low: 0.00).
+Processes (Tasks):
+103 total tasks:
+1 is running (active).
+102 are waiting (sleeping).
+None are stuck or dead (0 stopped, 0 zombie).
+CPU Usage:
+CPU is mostly free (89.6% idle).
+Only 0.3% is being used for programs.
+Memory:
+Total: 949.5 MB RAM.
+Free: 626.3 MB (a lot of free space).
+Used: 126.6 MB (small amount).
+Buffer/Cache: 196.6 MB (temporary storage).
+
+The system is working fine, not overloaded, and has plenty of resources available. 😊
+----------------------------------------------------------------------------------
+                                  process mgmnt and perf monitoring.
+								  
+1.& runs a command in the background.
+ping google.com &
+It means the command will run without blocking your terminal.
+ You can still use the terminal for other tasks while the command runs in the background.
+
+2. ps -  list of running processes
+ps aux | grep firefox
+
+a: Shows all users' processes.
+u: Shows the user who owns the process.
+x: Shows processes not linked to a terminal.
+----------------------------------------------------------------------
+What is System Monitoring?
+1.CPU/RAM we can monitor= over usgae of laptop.
+
+For CPU= nproc - list the CPU 
+for undertand RAM= what is memoruy we can use  "free"
+
+free total and used memory.
+
+Top = using that identies process like which process takes more memory..
+Which are sleeping or running which is taking more memory.
+"how to monitor the node health I use TOP or use custom shell scripts.
+
+Basic paramater used to eveluate the node health.
+1.basic CPU/RAM.
+
+
+It's about checking how well your Linux system is working, 
+like CPU usage, memory, disk space, and network activity.
+
+vmstat-Gives info about processes, memory, and CPU.
+
+-------------------------------------------------------
+
+3.kill: terminate process by ID
+kill PID
+
+In Linux, Ctrl + C is used to interrupt or cancel the currently running command 
+or process in the terminal.
+
+If you are running a command like ping google.com 
+and want to stop it, press Ctrl + C to cancel it.
+
+======================================================================
+beging of script we make use
+
+set -e #exi the script when there is an error
+set -o pipefail  ?? 
+
+set -e = it exit the script if tehre is an error.If 1000 shell scripts 1 line failed means no use of writing 1000
+so if even error also the sheell scrips gets excete the user will think all okay not notice 1 line.
+
+set -0 (set -e drawback - it looks only last commadn in pipe arguments like
+
+ssss l echo = even though error= if pipe used then set -e will get execeuted.
+ssss I echo I kkkan = here last command only l;ooks in pipe arg.. stops here..
+checks the genuinity of last command.
+
+So we use set -o pipeail
+ssss I echo == o/p is failed will show.
+--------------------------------------------------
+GREP:
+					 
+3.Grep-eg:   grep "word" filename.txt      Search Inside Files: grep <pattern> <file>: Search for a word in a file.
+Filter Output: cat <file> | grep <pattern>: Use grep with pipes.
+
+It finds and shows lines in the file that contain "word".
+
+grep is used to search for a specific word or pattern in a file.
+-i (Ignore case sensitivity): grep -i "word" filename.txt
+-v (Display lines except the given word): grep -v "word" filename.txt
+
+find PID?
+If i want take processes by amazon and take the process ID.
+
+1.PS -ef | grep "amazon"   we can see the processes running by amazon agent.
+
+If manger may need PID to kill the process or something he may ask you ID.
+| : pipe == Passes the file's content to the next command.
+------------------------------------------------------
+./kannan.sh | grep 1
+So, this command will execute the kannan.sh script and show the lines in its 
+output that contain the number 1.
+-------------------------------------------------------
+date | echo "date is" 
+Standard Input (stdin) and Standard Output (stdout):
+
+stdin: The default input stream, usually the keyboard.
+stdout: The default output stream, usually the terminal.
+
+When you use a pipe (|), the output of date is passed to echo as stdin. 
+However, echo does not read from stdin, 
+so it ignores the input from date and just prints "date is".
+------------------------------------------------------
+
+AWK: gives specifc column from output.
+
+diff awk vs grep: Grep gives entirer statments but awk powerful and gives specifc column from output.
+
+ps -ef | grep sudo | awk '{print $2}'
+
+
+o/p:
+1125
+1149
+
+without awk entire info. using the awk (in the info we have column)i wnat couln no 2 from multiple rows.
+so we can use awk.
+
+ps -ef: Lists all running processes.
+grep sudo: Filters out processes related to sudo.
+awk '{print $2}': Extracts and prints the second column, which is the process ID (PID).
+
+
+--------------------------------------------------------------------------------------
+
+
+18)Check disk space df -h.
+The df -h command shows the disk space usage in a human-readable format (sizes in GB, MB).
+
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  444K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.4G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+
+devtmpfs: Virtual space for device files (4MB total, not used).
+tmpfs (in /dev/shm): Temporary memory storage (475MB available, not used).
+/dev/xvda1: Main disk (8GB total, 1.6GB used, 6.4GB free).
+/dev/xvda128: Small boot partition (10MB total, 1.3MB used).
+tmpfs (in /tmp): Temporary storage (475MB available, not used).
+/run/user/1000: Temporary storage for the user (95MB available)
+
+
+/dev/xvda1: This is the main disk partition.
+/dev/xvda128: A small partition, typically used for boot purposes.
+
+------------------------------------------------------------------------
+du -sh :
+
+The du -sh command is used to display the disk usage of a directory in a human-readable format
+ The -s option stands for "summarize," which provides a total size for the specified directory, 
+ -h option stands for "human-readable," which displays the size in units like KB, MB, GB, etc.
+du -sh /path/to/directory
+
+du: Disk usage command.
+-s: Summarize the total size.
+-h: Human-readable format.
+/path/to/directory: The directory for which you want to check the disk usage.
+
+The command du -sh shows how much space the current folder is using. 
+Here, it is using 4.0 KB.
+-------------------------------
+disk usage:
+df - display free disk space.
+du - show file/folder sizes in disk.
+du -ah - disk usage in human readable format (kb,mbetc.,)
+du -sh - total disk usage in current dirc,.
+
+du -i eg: du -i /path/to/directory
+Useful when a filesystem runs out of inodes, even if there is free disk space.
+An inode is like a file’s ID. It stores details like size and owner but not the name. Every file has one.
+
+The locker number (inode) tells where your stuff is.
+The name tag (file name) is outside but not stored inside the locker.
+Even if you change the name tag, the locker number stays the same.
+Similarly, an inode stores file details but not the file name.
+---------------------------------------------------------------------------------------
+fdisk -l list disk partitions sizes and types.
+free -h display free and used memory in human readable units.
+free -m same in MB.
+-g for GB.
+
+free -m: Shows memory in megabytes (MB).
+free -g: Shows memory in gigabytes (GB).
+
+
+Phys: Your actual RAM (memory) in the system.
+Swap: Disk space used when your RAM is full.
+Memory (Mem): The total RAM used by the system.
+Cache: Temporary memory to store frequently used data for fast access.
+Buffers: Memory used by the system for tasks like reading or writing data
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+
+                                       CURL and WGET:
+
+Major use case of devops eng:
+1.100 app running one of failes - 1st thing check log file- find errors in the log  file.
+log file are very huge. and find out error. error level login.
+
+cat logfile I grep error.. 
+but there are more logs.. we uplod the log to S3(storge)so how do we retire the command using the CURL command.
+
+Curl command does =  retives the info from the internet.
+40)Curl - to transfer the data from server to other.
+
+1. Curl logfile location I grep ERROR
+CURL url log file | grep Trace
+here we get all the trace file..
+
+
+2.Also you want make get req from google.com or or any of app.
+eg:app end point called foo.bar.com
+
+curl -X GET api.foo.com
+
+We get info provided by foo.com = this is how fb and google api's works.
+
+we want somethimg download from any info like log file or download from internet such case also we use curl.
+
+GET - It’s like asking for information from a website or API.
+When you type a URL in a browser, your browser sends a GET request to fetch that page.
+Example in APIs:
+curl -X GET https://api.foo.com
+GET: Asks the server for data (like a profile, weather info, etc.).
+Response: The server sends back the requested data in return.
+In short, GET = "Give me this data."
+
+
+-------------------------------------
+wget: Focused on downloading files.
+It's like a downloader for websites or files.
+You can use it to fetch files, webpages, or even mirror entire websites.
+wget https://example.com/file.zip
+
+wget: Focused on downloading files.
+curl: Used for interacting with APIs and transferring data.
+
+=============================================================================================================
+
+                                                  Find:
+find to locate files.
+grep to search inside them!
+
+find: Locates files and directories in a filesystem based on name, type, size, etc.
+grep: Searches inside files for a specific pattern or text.
+
+
+This linux system-just 8GB-less no files.  ls /etc/  200 files here.
+But day-day we might want store many much in VM like mount new vol and storing diff log file.
+But i dono (if the file called pam.d, but i dodno its in etc file) but find out that.
+
+We can use find-- it will find / -name pam.d (/files and floders all)
+
+sudo find / -name pam.d  (powerful command search entire files and folder we can get file)
+
+Syntax: find / -name "kannan11"
+sudo find / -name "kannan.txt"
+
+
+Options:
+-name = for searching a file with its name
+-inum= searching file with inode number
+-type=with type of file
+-user= for files whose owner is a particular user
+-group= for files belonging to a particular group.
+
+1.find /path/to/src -name "*.sh" -
+find all files in /path/to/src matching with the patter "*.sh" in the file name.
+2. find /home -size +100M 
+find all files in the /home dirc larger than 100 MB.
+
+-----------------------------------------------------------------------------------
+FILTER COMMANDS:
+Filtering can be done with many tools, including grep.
+
+These are used to filter the output so that the required words can be easily
+picked up.The commands which are used to filter the output are:
+
+a) Head b) tail c) sort d) sed. 
+e) less and more used to see the output line wise or pagewise.
+--------------------------------------------------------
+
+echo -e "apple\nbanana\napple\norange\napple" | grep "apple" | head -n 2
+apple
+apple
+-----------------------------------------------------------
+b) Head: by default shows top 10 lines.
+See particular line
+ex: head -2 /etc/passwd
+
+d) Tail: by default shows bottom10 lines.
+ See particular line ex: tail -2 /etc/shadow in encrypted form.
+---------------------------------------------------------
+
+f) Sort - used to sort the output in numeric or alphabetic order.
+
+Ex: sort filename.
+To remove duplicate entries use: sort -u filename.
+
+Basic Sort: sort filename
+It sorts the lines of text in the file alphabetically from A to Z.
+
+Sort Numbers: sort -n filename
+If the file contains numbers, it sorts them in numerical order (1, 2, 3, etc.).
+
+Sort in Reverse: sort -r filename
+It sorts the lines in reverse order (Z to A or largest to smallest).
+
+Sort by Column: sort -k 2 filename
+If the file has multiple columns, this will sort the lines based on the second column.
+----------------------------------------------------------------------------------------------
+Sed command: 
+
+sed stands for stream editor.
+It is used to search words in a file and replace it with the word
+required to be in the output.
+
+Ex: sed ‘s/searchfor/replacewith/g’ filename
+sed 's/hi/hello/' kannan11
+
+=====================================================================================================
+
+
+------------------------------------------------------------
+SELinux is like a security guard for your Linux system. It decides what programs can and can't do.
+sestatus command: This command checks if SELinux is on or off.
+
+enabled means SELinux is on.
+enforcing means SELinux is actively protecting the system.
+In short: sestatus tells you if SELinux is running and how it's working.
+--------------------------------------------------------------------------------
+
+Extra add commands:
+
+1.Archiving: 
+What it is: Archiving means combining multiple files into one file for easier storage or transfer.
+tar -cvf:
+tar: A tool to create or extract archives.
+-c: Create a new archive.
+-v: Show the files being added.
+-f: Specify the archive file name.
+
+tar -cvf archive.tar file1.txt file2.txt
+This command creates a file called archive.tar that contains file1.txt and file2.txt.
+----------------------------------------------------------------------------------------------
+
+2.Compression:  Compression reduces the size of a file to save space or make it easier to transfer.
+gzip: A tool used to compress files in Linux.
+How it works: It compresses a file to make it smaller.
+gzip file.txt
+This command will compress file.txt and create a new file called file.txt.gz.
+The original file.txt is replaced by the compressed version.
+
+To uncompress a file that was compressed with gzip, you use the gunzip command.
+
+--------------------------------------------------------------
+
+Schedule Tasks with cron:
+
+cron is a time-based job scheduler in Unix-like operating systems.
+ Users can schedule jobs (commands or scripts) to run at specific times or intervals using cron.
+ 
+1. Edit Cron Jobs:  crontab -e
+Opens the user's crontab file in the default text editor for editing.
+
+2.List Current Cron Jobs:
+crontab -l  Lists the current user's cron jobs.
+
+Example: Schedule a Script to Run Daily at 5 AM
+
+#!/bin/bash
+# Instructions for setting up a cron job
+
+echo "To schedule this script to run daily at 5 AM, add the following line to your crontab:"
+echo "0 5 * * * /path/to/this_script.sh"
+
+# Your script's functionality here
+-------------------------
+crontab -e: Edit the cron jobs.
+crontab -l: List current cron jobs.
+Cron Syntax: minute hour day_of_month month day_of_week command
+Example: 0 5 * * * /path/to/script.sh runs the script daily at 5 AM.
+------------------------------------------------
+
+* * * * * command_to_execute
+- - - - -
+| | | | |
+| | | | +---- Day of the week (0 - 7) (Sunday is both 0 and 7)
+| | | +------ Month (1 - 12)
+| | +-------- Day of the month (1 - 31)
+| +---------- Hour (0 - 23)
++------------ Minute (0 - 59)
+
+*: Represents all possible values for the field (e.g., every minute, every hour, etc.).
+================================================================
+
+1.history command
+2.date = todays date.
+
+
+----------------------------------------------------------------
+log??
+A log is like a diary for your computer. 
+It keeps a record of what happens on the system, such as:
+
+What is running (like programs or services).
+If something went wrong (like an error).
+Who logged in and when.
+
+eg:If someone tries to log into the system with the wrong password, it gets saved in a log file.
+
+
+Why are logs important?
+Troubleshooting: Help figure out what went wrong.
+Security: Track who accessed the system and when.
+Performance: Monitor how the system is running.
+
+1.In the log file /var/log/auth.log, you might see:
+Jan 14 10:20:01 server1 sshd[1456]: Failed password for root
+
+Logs are essential for tracking events and finding problems. Let me know if you need more!
+
+
+when to check?
+If something fails: If a service (like a web server) stops working, check the logs to find out why.
+Security: To detect hackers or unauthorized access, check login-related logs.
+When users report problems: Logs can explain why users can't log in or use certain services.
+
+Logs are in the /var/log/ folder. Here are some key ones:
+
+/var/log/syslog	    General system logs (errors, services).
+/var/log/auth.log	Tracks login attempts and security-related events.
+/var/log/kern.log	Logs related to the system's core (kernel).
+/var/log/messages	General messages for system events.
+
+
+
+Failed logs typically refer to failed login attempts or unsuccessful actions on a system. 
+When someone tries to log in to the system with the wrong credentials,
+ it will show as a failed login in the logs.
+1. Search for Failed Logins
+$ grep "failed" /var/log/auth.log
+Jan 14 10:20:01 server1 sshd[1456]: Failed password for root
+
+2.2. View Last 10 Lines of a Log File
+$ tail /var/log/syslog
+Jan 14 10:22:20 server1 systemd[1]: Started Network Service.
+
+3. Real-Time Log Monitoring
+To watch logs as they happen:
+$ tail -f /var/log/auth.log
+Jan 14 10:23:01 server1 sshd[1458]: Failed password for root
+
+4. Check Cron Job Logs
+$ cat /var/log/cron
+Jan 14 10:30:01 server1 CRON[1234]: (root) CMD (/usr/bin/python /home/user/script.py)
+5. Search for Errors in Syslog
+$ grep "error" /var/log/syslog
+Jan 14 10:35:10 server1 systemd[1]: Failed to start MySQL.
+
+
+
+----------------------
+Ls
+When we type ls command the shell runs it and come back .. so you can type more commads.
+Ls
+Echo “ I am still here ”
+O/p:
+It shows files from ls and then prints “I am still here”
+ 
+Exec ls
+Echo “ I’m still here”
+ 
+With “exec”
+Shows ls but won’t see “I’m still here” because the shell is gone after the exec.
+ 
+Exec, saying forget the shell, only run this command and stop everything else.
+ 
+Exec - replaces the current shell process  with the command you run.
+This means it doesn’t create a new process, it overwrites the current one..
+ 
+———————————————
+Xargs
+Gives helps use the result of one command as input to another.
+ 
+Echo “ file1 file2 file3” | xargs rm
+ 
+Xargs gives these files to rm to delete them.
+ 
+Find . -name “*.txt” | xargs cat
+ 
+Xargs sends those files to cat to display the content.
+. Means current dir. And  * means all files//
+ 
+Wc used for counts lines, words or characters.
+ 
+Wc -l file.txt  means lines
+-w means words
+-c means characters..   like linux is output gives 6 bcz the wc -c counts the new character added by echo.
+ 
+Echo -n “linux” | wc -c    output gives 5  -n  option in echo removes the new line.
+ 
+ 
+Set -x =  all commands will be printed to the console before they are executed. This can be helpful for debugging purposes.
+$ set -x  # Enable tracing
+ 
+ 
+PID:	•	Definition: A unique number assigned to a process by the operating system.
+PPID: PPID (Parent Process ID)
+ 
+[System]
+        |
+      [Jenkins] (PID: 1000)
+        |
+      [Job] (PID: 2000)
+        |
+      PPID: 1000  (indicating its parent is Jenkins)
+ 
+PID (of the job): 2000
+PPID (of the job): 1000 (indicating it was created by the process with PID 1000, which is Jenkins).
+So if you're looking at a system and see that a process has a PPID of 1000,
+it means that the process is a child of the process with PID 1000.
+ 
+===================================
+extra:
+
+1.echo TEXT simply prints TEXT to the screen.
+echo Hello
+Hello
+It’s like saying "Hey, show me the word Hello" in the terminal.
+-------------------------------------------------------------
+ (Redirection in Linux)
+2.cmd > file saves the command's output into a file.
+ls > myfile.txt  # Saves `ls` output in myfile.txt (overwrites)  
+ls >> myfile.txt # Adds output to myfile.txt (appends)  
+
+echo "Hello" > myfile.txt  
+echo "World" > myfile.txt  
+ First command saves Hello in myfile.txt.
+📌 Second command replaces it with World (deletes "Hello").
+
+To keep old content, use >> (append).
+---------------------------------------------------
+3.cmd > /dev/null (Discard Output) 
+ls > /dev/null We use /dev/null to ignore output from a command.
+It’s like throwing away the result!
+Discard means to get rid of or throw away something.
+------------------------------------------------------
+4.cmd < file (Input Redirection)
+cmd < file means the command takes input from the file.
+
+sort < myfile.txt  # Sorts the contents of myfile.txt
+It’s like giving a file as input to the command.
+----------------------------------------
+This command allows you to provide multiple lines of input to a command until it encounters
+ a specific delimiter (delim).
+ 
+5.cat << EOF 
+cat << EOF
+Hello
+World
+EOF
+
+It gives "Hello" and "World" to the cat command.
+Stops when it sees EOF.
+
+lets you type multiple lines of input for a command until it sees EOF
+-----------------------------------------------------------------------------
+The correct operator is <<< for passing a string as input to a command.
+grep "apple" <<< "apple banana cherry"  # Searches for "apple"
+wc <<< "Hello World"  # Counts words in the string
+--------------------------------------------------
+cmd 2> foo (Redirecting Error Output)
+ls non_existing_folder 2> error.log
+
+/non_existing_folder is a folder that doesn't exist.
+Running this will produce an error, like "No such file or directory".
+save them in a file (error.log) instead of showing them on the screen.
+
+--------------------------------------------------------------------------
+cmd &> file (Redirecting Both Output and Error)
+This command redirects both standard output (stdout) and standard error (stderr) to a file.
+ls existing_folder non_existing_folder &> output.log
+
+Lists files in existing_folder (output).
+Shows an error for non_existing_folder (error).
+Both output and error are saved in output.log.
+------------------------------------------------------------------------------------------
+
+System info:
+1.uname - shows linux sys info.
+uname -a → shows all available information.
+uname -r → shows the kernel version.
+uname -m → shows machine architecture.
+---------------------------------
+$ uname -a
+Linux myhostname 5.8.0-53-generic #60-Ubuntu SMP Thu Dec 3 15:58:48 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+Kernel name: Linux
+Hostname: myhostname
+Kernel version: 5.8.0-53-generic
+Kernel release date: Thu Dec 3 15:58:48 UTC 2020
+Machine architecture: x86_64
+Operating system: GNU/Linux
+--------------------------------------
+2.uptime - how long the system has been running.
+$ uptime
+ 16:14:01 up 10 days,  3:21,  3 users,  load average: 0.12, 0.08, 0.06
+up 10 days, 3:21: System has been running for 10 days and 3 hours 21 minutes.
+3 users: 3 people are logged in.
+load average: System's recent load.
+----------------------------------------
+3.cal- d displays the current month's calendar.
+4.date-displays the current date and time.
+5.halt-  stop all running processes and shut down the system immediately.
+6.shutdown- shutdown the sys.
+7.reboot-restart the system. or last rebbot - show reboot history.
+8.man command - manual for given command. to exit press - q
+9.hostname-  shows the name of your system. $ hostname
+my-computer
+10.cat /etc/*-release -  version information of your Linux distribution.
+NAME="Ubuntu"
+VERSION="20.04 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+VERSION_ID="20.04"
+-------------
+           Hardware 
+1. dmesg - shows system and boot messages.
+It helps you see what happened when the system started or if there are any hardware issues.
+2. cat/proc/cpuinfo   or meminfo - display cpu or memory info.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===========================================================================================================================
+                              Permission: using no we can grand permi to the files.
+Owner: The user who owns the file.
+r: Read permission
+w: Write permission
+x: Execute permission
+
+Group: The group associated with the file.
+r: Read permission
+w: Write permission
+x: Execute permission
+
+Others: All other users who are not the owner and do not belong to the group.
+r: Read permission
+w: Write permission
+x: Execute permission
+
+
+TYPE                    file                                    DIRECTORY
+1. owner/ user        R read only                           R - ls contents of dir.              
+2.Group               W write, edit,append, deletefile      W add, delete,renamecontents of dir  
+3.Others              X to run command, shell script        X to enter into dir using ‘cd’       
+
+Permission Values:
+Read (r): 4
+Write (w): 2
+Execute (x): 1
+No Permission (-): 0                                                                         
+
+ls -l  or ls -al (hidden files).
+
+
+-/rw-/---/---             . single dot rep to current dir.   .. Parent dir
+drwxr-xr-x.
+
+- means file type.
+D means Dir
+ rw-=user 
+ ---=group
+ ---=other.
+
+
+full permission   chmod 777 file
+ remove all permisson from others    770
+
+
+
+Permissions can be set using Absolute method (numbers)
+DEFAULT PERMISSION FOR FILE- 644
+DEFAULT PERMISSIONS FOR DIRECTORY- 755
+
+=================================================================================================
+
+
+After creating a file: it has attributes user/owner and group names for that
+file.
+
+1.To change the user/owner of file - chown newname filename
+To change the user/owner name, we need to change to root use
+
+2. it changes the group ownership of a file or directory.  - chgrp newname filename
+Suppose we have a file named data.txt owned by the group developers.
+To change the group of the file to finance:
+
+chgrp finance data.txt
+After this, the group ownership of data.txt changes to finance.
+
+-----------------------------------------------
+you must be the root user or have superuser privileges.
+1.To view accounts - /etc/passwd
+2.To view passwords- /etc/shadow
+
+
+28)To set passwd- passwd username
+29)To remove password- passwd -d username
+
+
+============================================================================================
+
+

@@ -1,0 +1,510 @@
+KB (Kilobyte): 1,000 bytes.
+MB (Megabyte): 1,000 KB or 1 million bytes.
+GB (Gigabyte): 1,000 MB or 1 billion bytes.
+
+
+
+Hardware:
+we buy a laptop or server. Key comp of server: we buy like hardware.
+Hardware- CPU,RAM,I/O
+Try to use some s/w - like make use of some s/w-- like i need to use Jenkins.
+
+We have app-- that we want to run against the hardware that we purchased.
+I installed jenkins and need exece pipeline-it can't directlyt talk with hardware.
+Need some "medium bw SW and hardware" ===Called O/S.
+------------------------------------------------------
+what is o/s?
+An Operating System (O/S) helps you talk to your computer.
+Computers only understand 0s and 1s.
+The O/S translates your actions (like clicking or typing) so the computer understands.
+Examples: Windows, macOS, Android.
+------------------------------------------------
+O/s lifecycle: O/s heart of everything.
+Dell - sells you hardware = dell installimng O/s- that why we can install app and app able to process
+the req comes from the user. 
+As user we install app(on server)-app talks to o/s and o/s talking to hardware wise verse. 
+Then hardware talks to o/s - o/s gives back info to app and app gives info to you.
+
+MAC- MAC O/s 
+Dell- Windows.
+Thinkpad- Linux version.. depends on vendor..
+-----------------------------------------------------------------------
+Why Linux:
+1.Used in all IT - 80%--bcz 
+1.free or open source- anybody cretas linux o/s.
+2.Secure(in windows-we install antivirus)here no need -- its secure.
+3.Many distributions-- Free centos,ubuntu.... 
+4.fast-if user trying access amazon.com -- if o\s slow- then no use. In prod needs o/s to be fast.
+------------------------------------------------------------------------------------------------------
+
+                                          Fundamentals of linux O/s:
+We installed linux means we are installing the below all:
+
+O/s 
+
+1.Compliers/user processes/sys related s/w.
+2.Sys lib 
+3.Kernal
+
+
+3.Kernal- Heart of O/s bcz resposbilioty is establish comm bw your  hardware and software.
+User insatll S/w or app and hardware- So O/s responsible to cascading your req from software to hardware.
+who takes this respo??called Kernel..That why kernerl is Heart of O/S.....
+
+2.Sys lib:
+Resposnsible for performing a task. user trying to perf a task it comes from user and goes to kernel from sys lib.
+each sys has supoorte sys libe.. like we install a centos sys lib differs something but concept is same.
+Lipsy is one of sys lib.
+
+1.Last stage:
+We want to run Java sw o/s compies this code ryt fr that 
+ we have Compliers/user processes/sys related s/w.
+----------------------------------------------------------------------------------------
+
++-------------------+
+| User Applications | Programs you interact with (e.g., browser, text editor).
++-------------------+
+         |
+         v
++-------------------+
+|      Shell        | Command-line interface to send commands to the OS.
++-------------------+
+         |
+         v
++-------------------+
+| User Processes,   |
+| Compilers, and    | Handles tasks and executes programs.
+| System Software   |
++-------------------+
+         |
+         v
++-------------------+
+| Linux OS          | Manages resources and provides an environment for applications.
+| (Operating System)|
++-------------------+
+         |
+         v
++-------------------+
+| System Libraries  | Provides an interface for user applications to communicate with the Kernel.
++-------------------+
+         |
+         v
++-------------------+
+|     Kernel        | Heart of the OS; responsible for managing hardware and software communication.
++-------------------+
+         |
+         v
++-------------------+
+| Hardware Layer    | Physical components (CPU, RAM, etc.) that execute instructions.
++-------------------+
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+                                 LINUX FILE SYSTEM:
+File system hirerarcy:
+
+Yes, all of the mentioned items are directories (folders) in a typical Linux file system.
+They organize different types of system files and data, each serving a specific purpose. 
+-------------------------------------------------------
+1. / (Root Directory)
+What it is: The base of the Linux file system.
+Example: Every file and folder starts here. For example, /etc and /var are inside /.
+--------------------------------------
+2./var (Logs and Variable Data)
+System logs and data that change frequently.
+
+Application logs like /var/log/nginx/error.log.
+CI/CD tools like Jenkins use /var/lib/jenkins.
+------------------------------------------------------------------------------------------
+3. /etc (Configuration Files)
+System and app config files.
+
+
+Docker’s config: /etc/docker/daemon.json.
+Cron job settings: /etc/crontab.
+Example:  /etc/passwd stores user account information.
+
+
+--------------------------------------------------------------------------------
+4. /home (User Data)
+What it contains: Personal directories for users.
+Developer files are in /home/devuser/.
+Example: /home/john is the personal folder for the user "john".
+----------------------------------------------------
+5. /usr (User Programs)
+This folder is where most of the software and applications for regular users are stored.
+Software and tools installed for users.
+
+Kubernetes tools like kubectl are in /usr/bin/kubectl.
+ If you have a program like Firefox, its files would be in /usr/bin/firefox.
+
+6. /bin and /sbin (Commands)
+Basic system commands.
+Example: listing file (ls),copying files(cp)&moving files (mv)
+/bin/bash for shell scripts.
+
+/sbin: System administration commands.
+Example: shutdown for turning off the system.
+/sbin/reboot to restart servers.
+
+/bin: Contains the basic commands needed to run and repair the system. 
+These commands are needed for the system to start, like bash (shell), ls (list files), and cp (copy files).
+-------------------------------------------------------------
+/usr/bin contains user applications and non-essential system commands.
+
+
+/usr/bin: Contains additional commands and programs that are used after the system is fully running,
+ like git (version control) or python3 (Python).
+
+python3 – The Python interpreter used to run Python scripts. 
+It's not required for booting the system but needed for development or running Python programs.
+
+
+
+
+/usr/bin: User command binaries.
+Example: /usr/bin/git for the Git version control system.
+
+/usr/sbin: Admin command binaries.
+Example: /usr/sbin/apache2 for the web server.
+
+/usr/lib: Libraries for user programs.
+Example: Libraries used by applications in /usr/bin.
+
+/usr/local: Locally installed programs.
+Example: Software installed manually by the user.
+----------------------------------------------------------------------
+7. /tmp (Temporary Files)
+Temporary files created by apps or scripts.
+Example for DevOps: Temporary build files during deployments.
+-------------------------------------------------------------------
+8. /dev (Device Files)
+contains device files that represent hardware devices,like hard drives, printers, or USB devices.
+ /dev/sda represents the first hard drive.
+-------------------------------------------------
+9. /proc and /sys (System Info)
+Virtual Directory: /proc is a special directory that contains information about the system and running processes. 
+It's not stored on your disk; it exists in memory and updates in real-time.
+ 
+What’s Inside /proc?
+Process Info: Contains folders for each running program (identified by a unique number called PID) 
+that show details about that program.
+System Info: Files that provide data about the CPU, memory usage, and other system statistics 
+(like /proc/cpuinfo and /proc/meminfo).
+ 
+Monitoring: You can check how your system is doing and what processes are running.
+Troubleshooting: Helps identify issues with running applications or system resources.
+If you want to see details about your CPU, you can look at the file /proc/cpuinfo.
+What is it?: A special folder in Linux that gives you information about your computer's hardware.
+ 
+ 
+ 
+10. /sys Directory
+What is it?: A special folder in Linux that gives you information about your computer's hardware.
+What’s Inside?: It shows details about devices like hard drives, USB ports, and how the system manages power.
+Why Use It?: You can check and change settings for your hardware.
+Example: You can find info about your hard drive in /sys/block/.
+/sys helps you see and manage your computer's hardware.
+ 
+top is a tool to see and manage running programs, their CPU, and memory usage.
+ 
+-----------------------------------------------------------------
+10. /opt (Optional Software)
+What it contains: Third-party or custom-installed applications.
+Example for DevOps:
+You may find manually installed tools like /opt/terraform.
+----------------------------------------------------------------
+ What is /lib?
+Storage for Libraries: The /lib directory is where shared libraries are kept.
+These libraries are like collections of pre-written code that programs can use to perform 
+common tasks without having to write all that code themselves.
+ 
+Think of a library as a toolbox: If you're a carpenter (the program), 
+instead of making your own tools (code), 
+you can just grab what you need from the toolbox (the shared libraries) to help you with your work.
+
+/lib = Library Directory: It stores the tools (libraries) that help programs run smoothly on your Linux system.
+ 
+
+Why is it important?
+Helps Programs Run: When programs (like those in /bin or /usr/bin) are executed,
+ they often need to call on these libraries to get certain functionalities 
+ (like file manipulation, memory management, etc.). This allows them to work more efficiently.
+-----------------------------------------------------------------------------
+12. /mnt and /media (Mount Points)
+
+"Mount" means connecting a storage device, like a USB drive, 
+to your computer so you can access its files through a specific folder.
+
+
+/mnt
+Imagine /mnt as a guest room in your house: 
+When friends come over (external devices), you might ask them to stay in the guest room (mount in /mnt) 
+while visiting, so you can easily find and use their things.
+ 
+TemporaryMounting Point: The /mnt directory is a standard location where you can temporarily mount or attach filesystems.
+This means if you connect a hard drive, USB stick, or other storage devices to your comp
+/mnt = Mounting Directory: It’s a place to temporarily access and organize files from external 
+devices connected to your Linux system.
+	
+	
+
+/media = Media Mounting Directory: It’s a standard location for accessing files on removable devices 
+that are automatically mounted by your Linux system.
+ 
+Imagine /media as a parking lot: 
+When you drive your car (USB drive) to a restaurant (your computer), 
+a space is created for your car in the parking lot (a folder in /media) 
+where it can be accessed while you enjoy your meal. 
+When you leave, the spot is cleared for others.
+
+-------------------------------------------------------
+13. /srv (Service Data)
+Data served by services like web or FTP servers.
+A web server's site data might be stored in /srv/www.
+The /srv directory in Linux is where you store data for services that the computer provides.
+-------------------------------------------------------------------------------------------------
+14. /root (Admin User’s Home Directory)
+ Home directory for the root user.
+ The root user may store scripts or emergency recovery files here.
+-------------------------------------------------------------
+15. /boot (Boot Files)
+What it contains: Kernel and bootloader files.
+Example for DevOps:
+The grub.cfg file, used for system startup, is located in /boot/grub.
+----------------------------------------------------------------------\
+16. /run (Runtime Data)
+What it contains: Temporary files created during system runtime.
+Example for DevOps:
+PID files like /run/docker.pid to track running Docker processes.
+---------------------------------------------------------------------------
+
+
+A library is a collection of pre-compiled pieces of code called functions.
+The library contains common functions and together, they form a /package called — a library. 
+
+Functions are blocks of code that get reused throughout the program.
+Using the pieces of code again in a program
+saves time. It keeps the programmer from rewriting the code several times.
+For programmers, libraries provide reusable functions, data structures,classes and so forth.
+
+ex: connect a USB drive to your Linux computer.
+sudo mount /dev/sdb1 /mnt/usb
+
+sudo: Runs the command with superuser (admin) privileges, which is often necessary for mounting.
+mount: The command that connects the file system to a directory.
+
+/dev/sdb1: The specific device file representing the USB drive. 
+In this case, sdb1 refers to the first partition of the second storage device.
+
+/mnt/usb: The directory where the USB drive will be accessible. You can then access its contents from this location.
+Once mounted, you can browse and use the files on the USB drive through the /mnt/usb directory.
+==============================================================
+
+
+
+Here’s a complete explanation of how *Linux laptops* work, including *system libraries, compilers, and all components* with examples:  
+
+---
+
+### *1. Hardware (Physical Components)*  
+- *CPU (Central Processing Unit)*: Executes tasks and runs programs.  
+  - Example: Executes a Python script.  
+- *RAM (Memory)*: Temporary space for active tasks.  
+  - Example: When you open VS Code, it loads into RAM.  
+- *Storage (SSD/HDD)*: Permanent storage for files, OS, and applications.  
+  - Example: Stores the Linux OS and your project files.  
+- *Motherboard*: Connects all hardware components.  
+- *Peripherals*: Input/output devices like keyboard, mouse, and display.  
+
+---
+
+### *2. Software (What Makes the Laptop Work)*  
+
+#### *Operating System Components*  
+1. *Kernel (Linux Kernel)*:  
+   - Core of the OS that manages hardware (CPU, RAM, storage, etc.).  
+   - Example: When you save a file, the kernel tells the SSD where to store it.  
+
+2. *System Libraries*:  
+   - Pre-written code that apps use to interact with the system.  
+   - Example:  
+     - glibc (GNU C Library): Provides basic functions like file handling or memory allocation.  
+     - If a program wants to open a file, it uses glibc to communicate with the kernel.  
+
+3. *System Tools*:  
+   - Utilities to manage the system, like ls, cp, top.  
+   - Example:  
+     - You run top to monitor CPU and memory usage.  
+
+#### *Compilers and Tools*  
+1. *Compiler*: Converts programming code (C, C++, etc.) into machine code the CPU understands.  
+   - Example:  
+     - You write a C program and compile it with gcc (GNU Compiler Collection). The compiled program runs on your laptop.  
+
+2. *Interpreter*: Executes code line by line (e.g., Python).  
+   - Example:  
+     - You write a Python script and run it with python3.  
+
+3. *Package Managers*:  
+   - Tools to install and manage software.  
+   - Example:  
+     - You use apt (Ubuntu/Debian) or yum (RHEL) to install apps like git or nginx.  
+
+---
+
+### *3. Applications*  
+- *Text Editors*: Tools to write code or edit files (e.g., vim, nano, VS Code).  
+- *Development Tools*: IDEs and debuggers (e.g., Eclipse, gdb).  
+- *Browsers*: For internet access (e.g., Firefox, Chrome).  
+- *Media Players*: Play videos or music (e.g., VLC).  
+
+---
+
+### *How It All Works Together (Examples)*  
+
+#### *Example 1: Writing and Running a Program*  
+1. Write a C program (example.c) using vim.  
+2. Compile it using gcc example.c -o example.  
+   - **System Library (glibc)** helps the program link required functions.  
+3. Run the program by typing ./example.  
+4. The *kernel* manages CPU and memory usage to execute the program.  
+
+#### *Example 2: Installing a New App*  
+1. Use sudo apt install git to install Git.  
+2. The package manager (apt) downloads and installs Git from a repository.  
+3. Git uses *system libraries* to interact with the filesystem and the kernel.  
+
+#### *Example 3: Editing a File*  
+1. Open nano file.txt.  
+2. *Shell* (e.g., bash) processes the nano command.  
+3. *Kernel* fetches the file from storage into RAM.  
+4. Edit and save → The kernel writes changes back to storage.  
+
+#### *Example 4: Compiling Python Code*  
+1. Write a Python script (script.py).  
+2. Run python3 script.py.  
+3. The Python *interpreter* executes the script line by line using *libraries* like os or sys.  
+4. *Kernel* manages hardware (CPU, RAM) during execution.  
+
+---
+
+### *Kernel as the Heart of Linux*  
+The *kernel* is the "core" of Linux. It acts as a *bridge* between:  
+1. *User (via the shell or GUI)*  
+2. *Hardware (CPU, RAM, storage, etc.)*  
+
+---
+
+### *How It Works (Step-by-Step)*  
+1. *User Input*:  
+   - You give a command in the *shell* (e.g., ls).  
+
+2. *Shell Processes It*:  
+   - The *shell* translates your command into a system call (a request for the kernel).  
+
+3. *Kernel Executes*:  
+   - The *kernel* talks to hardware and performs the task.  
+     - Example: For ls, it fetches file info from the storage.  
+
+4. *Output Returned*:  
+   - The *kernel* sends the result back to the shell, which displays it on your screen.  
+
+---
+
+### *Example: Saving a File*  
+1. You write text in a text editor and save it.  
+2. The *text editor* sends a request to the *kernel* to save the file.  
+3. The *kernel* tells the SSD to write the data.  
+4. File is saved, and confirmation is sent back to the user.  
+
+---
+
+### *Analogy*  
+- Think of the *kernel* as a post office.  
+  - *User/Shell*: Customer requesting delivery.  
+  - *Kernel*: The worker who processes and delivers the request.  
+  - *Hardware*: Trucks, routes, and infrastructure to fulfill the task.
+  
+  
+  
+  
+ 
+RAM (Whiteboard):
+
+Purpose: Temporary notes for quick work.
+Speed: Very fast (easy to write and erase).
+Volatility: Erased when cleaned.
+Disk Space (Notebook):
+
+Purpose: Permanent notes for long-term use.
+Speed: Slower (takes time to find a page).
+Volatility: Stays until you tear it out.
+==========================================================================================
+ Linux boot process 
+
+1.BIOS/UEFI:  Basic Input/Output System. 
+
+It's a firmware that runs when you start your computer and helps the system boot up by checking hardware 
+like the CPU, RAM, and storage devices. It also loads the operating system.
+
+
+When you power on your computer, the BIOS/UEFI runs first.
+Example: It checks if your CPU, RAM, and storage devices (like HDD or SSD) are working.z
+---------------------
+Bootloader (GRUB): 
+After BIOS, GRUB (Grand Unified Bootloader) is loaded.
+ It shows options to select which operating system to boot (if there are multiple OSes).
+GRUB menu:
+1. Ubuntu
+2. Windows
+
+Think of BIOS as the "power switch" that starts your computer. 
+After that, GRUB is like a "menu" at a restaurant that lets you pick which dish 
+(operating system) you want to have, especially if there are more than one available.
+------------------------
+Kernel:
+The kernel is like the "manager" of your computer. 
+Once you choose your operating system in GRUB, the kernel takes over and manages all the 
+hardware (like the CPU, memory, and devices) and makes sure everything works smoothly.
+
+Example: When the kernel is loading, you might see messages like:
+Loading Linux 5.4.0...
+
+The kernel is like a bus driver. Once you're on the bus (the operating system), 
+the driver (kernel) makes sure the bus (hardware) runs smoothly, taking you where you need to go.
+
+--------------------------------------------
+Init/Systemd:
+After the kernel is loaded, init or systemd starts. 
+It’s responsible for launching all the system services like networking and user login.
+Starting Network Service...
+
+Example: It’s like the system getting ready for you to use it.
+
+Init/Systemd is like a manager in a restaurant. 
+After you sit down, the manager makes sure everything (like your order and the kitchen) runs smoothly.
+--------------------------------------------------------------------------
+Runlevel/Target:
+
+The system enters a state that tells it what to do (e.g., showing the login screen or running programs).
+Example: You might enter a “login screen” or a “command line” after booting.
+
+Runlevel/Target is like different stages in a game. Each stage (like "Start" or "Pause") 
+controls what your system can do, like whether it's fully running or in a low-power state.
+
+
+
+
+
+
+
+
+

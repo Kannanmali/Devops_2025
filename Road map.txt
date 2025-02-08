@@ -1,0 +1,58 @@
+Devops_2025 road map_folder..
+
+Basic of Devops:
+It fundamentals
+1.SDLC
+2.Devops why?
+3.Virtualization?
+
+
+
+
+-----------------------------------
+1.Git,github==done
+2.Linux==done
+3.Shell Scripting = done
+
+
+---------------------------------------------------
+Aws_devops
+1.Ec2 =done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=============================================================================
+Cloud imp:
+1)Authentication & Authorisation ( Like Microsoft Entra ID / Azure AD)
+2) Networking and It's Components 
+3) Compute (Azure VM)
+4) Storage 
+5)CI / CD
+6) Serverless (PAAS/ SAAS services)
+7) Security and compliance 
+8)Cost Optimization 
+
+
+For Devops
+1)Kubernetes (container and  container orchestration)
+2)Terraform 
+3) Knowledge of AI (How to use it in Day to Day operation)
+4) CI / CD 
+(CI - Jenkins/ Git lab pipe line and Git Hub Action.
+CD - Argo CD)
+------------------------------------------------------

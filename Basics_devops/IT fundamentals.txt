@@ -1,0 +1,106 @@
+
+IT - info data one to another person - gng thru computer.
+
+que on how it works:
+1.what-images,pdf videos etc.. 2.where-per to person or loc to location or compant to company
+3.when-24/7*365 4.why??-planning decion problem solving and saves money..5.how all happening??
+thru the IT components..
+
+facts of IT??
+1.like we have tech everwhere..
+
+Major it components:
+1.Hradware 
+2.O/S
+3.App/Sw
+4.Networking
+5.Security 
+
+Enterprise level components:
+1.Storage 2.Databse 3.Virtualization 4.Cloud.
+=============================================================================================
+Hardware needs O/S to work but before see what is inside the hardware.
+1.Hardware-1st piece of IT tech. Pieces of bricks-makes box.
+motherboard-all little circuits,memory,CPUall circtus,
+RAM - Random access memory. Bcz memory holds your info temp while you opening up a programmme.
+CPU-human brain it does calculation for you.
+Chip sets top on motherboard.. 
+Harddrive - inside harware wer you store-all info stays there when you trun off the computer.
+Fan-to keep all devices inside cool. 
+
+
+
+--------------------------------------------------------------------------------------------
+((RAM: RAM is fast, temporary memory used by the computer for active tasks. 
+It gets erased when the device is turned off.
+RAM: Think of RAM like a table where you watch a video. 
+The video plays on the table, but once you turn off your laptop,everything on the table is gone.
+--------------------------------------------------------------
+
+ROM: ROM is permanent memory that stores important instructions 
+(like how to start the device). It stays even when the device is off.))
+
+ROM: Think of ROM like a book that tells your laptop how to start. 
+Even when the laptop is off, the book stays the same and helps the laptop turn on.
+---------------------------------------------------------------------------------------------
+O/S: Imp program runs on computer.tells hardware what to do.
+basic task-finding input from keyboard to seng o/p to display screen. keeping track of files and 
+directories on disk and controlling  power fuul dfevice like disk driver and printers.
+
+Human body is hardware-O/s is spirit inside tells what to do?
+So O/s tells sys what to do. like move hand from signals.
+
+eg: file edited-print--its sends O/S takes that command-sends to harware tell to print it.
+==============================
+APP/SW??
+
+O/S-is just a SW-written in C C++
+App -also SW but it runs on top of O/S- 
+So when you start O/S the u start your application.
+
+APp- user trun on computer to use app(microsoft app excel ppt etcc, broweser,..etc..)
+Server level app:
+1.ERP-Enterprise resource plannig
+2.CRM-customer relation manager
+3.Server applications((active directory,database,DNS, NTP etc).
+
+====================================================================
+Databse: 
+A orgnized structured collection of data..
+
+DBMS- databse mangement system.
+1.DBMS-system is a SW for creating and mananging the database.
+SW-allows to manage data profestionally.
+
+types:
+1. Centarlized DB
+2.Distributed DB.
+
+DB config:
+1.Local-You can run the local DB with in your computer.
+2.External-You could have an app runnning on computer which connects - to an external DB.
+Like also other computer that only rusn the DB SW. SW is DBMS..
+
+Virtulazation and Cloud:
+-----------------------
+Enterprise level IT components:
+1.Storage - like harddrive comes with computer--But big companuies--use external storage..
+like 1000 of disc.. 
+2.Database-Strcuted way of putting info together.
+3.virtualization and Cloud..
+
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

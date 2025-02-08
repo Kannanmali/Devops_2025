@@ -1,0 +1,237 @@
+Basics of shell scripting:
+
+Shell scripting:
+why? Shell-way to talks to your o/s.
+To create file-GUI will be not in servers-- we have to do in Command Line way.
+This CLI through which you talk to your o/s called shell commands..
+
+Linux- the way we talk to o/s is using shell commands.. Shells 99% servers we are using in prod 
+default come with shell environment - we konw shell commands we can talk with linux o/s.
+
+Commands commnon - across all distributions.. 
+ Like create file - linux GUI is not possible- bcz its heavy - n prod sys we make use of shell commands to 
+ create files etc...,,,,,
+----------------------------------------------------------------------------
+Automatiuon-reduce manual activity--we have choosen Automation..
+Linux machine-write 1 to 10. we use echo command-- if no incr 10 to 1,00,0000....
+So we need automation(like some one says 100 files create) than manual not possible by using touch..but 10000
+we need automation like shell scripting.
+
+SS-is process of automating day-day activity or reguar activties on linux computer.
+this is the reason we need SS
+---------------------------------------------------------------------------
+How to write??
+
+1..sh is shell script extension for python py
+
+The shebang (#!) is a symbol at the start of a script that tells
+ the system which program to use to run the script. 
+It’s followed by the path to that program.
+
+bash,dash,sh,kash??? This all diff execetables of shell scritpitng.
+Lets say we run java who is excuting--so like that someone needs to execeute the scripts..
+Just has syntax diff bw the types of excetables..
+
+So, bash is for advanced scripting, sh is for basic scripts.
+
+Bash= Widely used.
+For a Bash script, it looks like this: #!/bin/bash
+---------------------------------------------------------------------------------------
+role of ss inside devops??
+1.we have Infra manintance(infra of org)   
+2.we maintanig code(using Linux in GIT)
+3.Lot of configratioin managment
+
+For this purpose on day to day basis we use shell scripting.
+regaular automation. or monior the health of nodes.
+
+Eg: devops engg john at amazon-noticed that 10,000 VM's. all are linux based.
+Some reason all of this VM monior node of this VM's.
+every time - go to VM- developer says the CPU is gng out-mmeory is running out - linux is slow.
+everytime jhon-goes the machine and fix that..
+Instated he make a use of shell scriping:
+1.He write one simple SS-saves in git repo. whnever some dev says 999 Vm no is issue.
+John just execut the shell script-on local machine.. The ss logs in machine and looks into all
+paramertes like CPU,memory and why are process gng slow-which files are runnig
+how files open in machione..
+--------------------------------
+
+O/p:
+Script says i execeuted the script and inoticed is the memory is completly used in one the nodes.
+or Jhon though every time getting req for memory being used=let me do once every two days 
+basically gets executed and look into this all this 10,0000
+
+Logs in status of 10,000 and send out email that I have eveulated all on this 10 suspecious.
+and 5 machines memeory issies- 5 machins issies with CPU.
+
+One of the use case:
+Interview?
+Why u use SS:
+1.I have automated all node health of my VM-so we have 1000 VM
+everytime iys diff to moniotor the node health or status of the VM.we decide to write Scripts.
+In our org we are not using other tools bcz are only restrcvting for some paramerts 
+but in my SS we fetch more paramerts compare the other tools.
+-------------------------------------------------------------------------------------------------
+
+----------------------------------
+
+-----------------------------
+3.
+-------------------------------------
+4.
+----------------
+if- Starts the conditional block.
+Checks the condition inside [ ... ].
+==: Checks equality between user_name and "admin".
+$user_name: Refers to the value stored in the variable user_name.
+---
+then:
+Specifies what to do if the condition is true.
+echo "Welcome, admin!"
+Prints the message if user_name equals "admin".
+else:echo "Access denied."
+fi:Ends the conditional block.
+----------------------------------------------------------------------
+elif means "else if". It checks another condition if the first if is false.
+
+user_name="guest"
+-------------------------------
+if [ $user_name == "admin" ]; then
+    echo "Welcome, admin!"
+elif [ $user_name == "guest" ]; then
+    echo "Welcome, guest!"
+else
+    echo "Access denied."
+fi
+
+===========================================================
+
+=====================================================================================
+Functions
+Reuse code with functions.
+A function is a block of code that you can reuse in your script.
+ It helps avoid writing the same commands again and again.
+ Syntax:
+function_name() {
+    # Commands
+}
+----------------------------------
+# Define a function
+greet() {
+    echo "Hello, $1!"
+}
+
+# Call the function
+greet "Alice"
+greet "Bob"
+---------------------------
+o/p:
+Hello, Alice!  
+Hello, Bob!  
+
+greet is the function name.
+$1 is the first input you give to the function.
+-------------------------------------------
+Execute the Script: Save the script (e.g., script.sh) and make it executable:
+chmod +x script.sh
+./script.sh
+--------------------------------------------------------------------------------------------------------
+
+
+
+
+??
+
+
+
+Functions
+
+Reuse code with functions.
+bash
+Copy
+Edit
+greet() {
+    echo "Hello, $1!"
+}
+greet "DevOps Engineer"
+Execute the Script
+
+Save the script (e.g., script.sh) and make it executable:
+bash
+Copy
+Edit
+chmod +x script.sh
+./script.sh
+Example Shell Script:
+bash
+Copy
+Edit
+#!/bin/bash
+
+# This script greets the user and shows system information.
+
+# Greet the user
+echo "Enter your name:"
+read name
+echo "Hello, $name!"
+
+# Display date and uptime
+echo "Today is: $(date)"
+echo "System uptime: $(uptime -p)"
+
+# List files in the current directory
+echo "Files in $(pwd):"
+ls
+This script covers variables, user input, commands, and simple tasks—a solid start for DevOps workflows.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------
+
+===========================================================================
+
+Arrays
+An array is like a list or a bunch of boxes where you can keep different things. 
+Each box has a number called an index to find it.
+
+function data type param and arge???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        

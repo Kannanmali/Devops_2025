@@ -1,0 +1,144 @@
+SDLC: Software development life Cycle.
+Std - follows specific std. 
+
+Set of std follows in industry to.
+Main Phases:
+
+1.Design
+2.Develop
+3.Test       
+SDLC is process followed by industry-to design,develop and test high quality Products..
+end Goal of SDLC-is to deliver a high quality product.. 
+
+Deep dive:
+working at "Flipkart".  We deliver a E-commerece application(build and deliver).
+In flipkart there are diff phases before the deliver the app to the customer.
+
+1.Planning-requirements gathering and analysis" information will be collected like product features.
+Who are the users, how it will be used, some user requirements, current state of the market and fewother things.
+Core members like business analyst do that..or senior or product owner.. they get input gather info from customer.
+
+
+2.Defining-Definie interms of documents-Business analyst write SW req speciifcatiuon document.All collected data.
+
+
+3.Designing:
+We have TL.. They write high level design-in chrimstam more load-it shoiuld be high avaibble etcc.Such things 
+definined in High level design.
+Senior member of the development team do 
+Low level design- let say our org use Java.So they design such way would mention Okay I want to use MYSQL database.
+I want to call from the app. I want to take a function call.all those things mentioned here..
+---------------------------------------------------
+Here actual devops improtance comes into picuture: we need to automate the process for below:
+
+4.Building
+5.testing
+6.Deploy
+
+If new feature we follow the same circle again..
+----------------------------------------------------------------------------
+If Flipart - wants kid section- new feature wants to start..They have go throw above process.
+
+***IMP
+End goal -->> Improve org efficiency.. Like we devops has to decide whether some tool is to be in org or not.
+think in org incr approach
+How devops improves the efficiency??of this phases
+
+
+Building=Developing 
+Once sr.come with design or plannig or doc next thing app should be next developing..
+Developer-Start writing code..developer read Jira or documents start writing code.
+reviewed by peer members means other members in team.
+
+Then he push to GIT(SC Repo)to share code with others(central repo)
+----------------------------------------------------------
+Testing=Dev said woring fine in my server-but everyoine beliver no - bcz end goal to deliver a prompt and 
+quality code to the customer. So it has goes to testing phase.
+This app from repo and depolyed in server--- a team QA team = take care of tested the SW.
+
+Deployment=Here promots the app to PROD(tetsing in developmet server)finally push to prod-- Who is receing =Customer.
+
+Where devops comes???==Fasten this process=he imprioevs proecss delivey code quickly.
+all phases followed in automated way..Atomatioin leads to efficiency of product delivery.
+===========================================================================================
+
+So SDLC is std-we focused on devops (3 phases). 
+We not gonna do all process manually = We write auto scripts = to impro efficiency and reduceddes
+time by avaoidjng manual intervention.
+
+
+All the cycle done in different ways. If we talk of project managemnt
+there are diff things like 1.waterfall 2.Ittrative model 3.Agile model.
+Will learn in Proect managemnt Class.
+
+Now all Org uses agile- it follows all cycle=all phases=you take short sprints 
+is you don't wait till all your planning done=Once small chuck is done 
+you start with all of this process and the other chunk is done you again follow entire cycle.
+that is called agile.
+============================================================================================================
+
+
+Google extra notes:
+
+
+
+
+
+
+
+1.water fall: Each phase must be completed before the next phase can begin.
+A. Requirement completes, then only planning begins and then development starts.
+When everything is completed, all the features will be tested and then maintenance phase starts.
+It is very difficult here to go back and change something that was not well thought out in the planning.
+Working software is produced very late in the lifecycle.
+It may take months in our case.   Its no go XXXXXXXXXXXXXXXXXXXX
+
+2.Agile: instead of developing all the requirements for months, it can be divided into smaller lists.
+Work on a list for 2 to 4 weeks and then move on to the next list and so on and so forth.
+Each iteration could be 2 to 4 weeks.
+A.Developers have started coding after all the planning.
+B.Freddie infrom the operations team to deploy code on the servers
+C. so it can be further  tested by the software testers. 
+?? But at times testers are not able to access the servers or even the test cases are failing.????
+Freddie is confused????
+Agile is SDLC puts extra stress on the ops team.
+1. regular code changes 2. changes need to be deployed on the servers so testers can conduct their testings.
+3. this happens several times In a single iteration like that
+
+Ops team is tired with regular deployment requests.
+There are no clear instructions which causes deployment failures.
+They need to maintain system uptime all the time.
+
+In between these failures and fixes, Harvey has passed the deadline of demonstration.
+
+
+
+
+Dev +  Ops = are poles apart.
+Dev- agile(regular and quick changes) Ops - provides stable environment for project.
+Big Wall b/w 2 parties??? 
+he developer tossed their code over the wall and ops team responsibility is to deploy the code on the servers.
+Developers complain about delay in deployments 
+ops complain - complaints about unclear instructions and tossing their work over the wall.
+
+business loss  - due to deplay...
+Reggie understood that Dev is agile but Ops is still waterfall.
+
+
+
+
+
+DEVOPS
+
+DEVOPS-------brings devops consultant who can fix the code delivery issue and skyrocket the business.
+Everyone has to work collaboratively, communicate effectively, and integrate the entire code delivery process.
+=====================================================================================================================
+Automate""
+Automation training and instruction to every team across the board.
+ code build code testing software, testing,
+infra changes, deployments, and everything that comes along the way
+
+Wall of confusion is brought down like the Berlin Wall, and the desire is to work together and together and together.
+So the dev and ops start working together.
+Each and every task is automated in the delivery process by every team, so the whole process can be integrated together.
+So finally, the automated and integrated delivery process.

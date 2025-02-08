@@ -1,0 +1,495 @@
+Basis:
+
+Internet: Is globally web computers connected to  each other by wires. Like  super high way.
+ISP- Internet service provider.
+ISP: The company that provides your internet connection. Without an ISP, you can't connect to the internet.
+
+1.Network - Combination of two more computers connected together to share their resources each other
+by means of communication like cable is called Network. connecting servers via medium 
+to get network option we need requirment.
+
+In an office, all computers are connected so employees can share files and use the same printer.
+This setup is called a network.
+
+When you browse a website, your computer sends a request through the internet to a server 
+that holds the website’s data,and the server sends the webpage back to you.
+ 
+---------------------------------------------------------------------------------------------
+                                          NIC stands for Network Interface Card.
+(Built into the motherboard – This is inside the CPU cabinet, directly on the motherboard.)
+ The bridge between your computer and the internet or local network.
+ This hardware device allows your computer to connect to the network (like a router or switch).
+
+Physical NIC: Your computer has a Wi-Fi adapter or an Ethernet card. 
+
+Ethernet card (NIC): It has a port where you plug in an Ethernet cable to connect your computer to a wired network.
+Wi-Fi adapter (NIC): It allows your computer to connect wirelessly to a Wi-Fi network.
+
+What Happens:
+You plug the Ethernet cable into your NIC (the network card in your computer).
+The NIC now allows your computer to communicate with the network.
+The operating system will create a network interface (like eth0), 
+which is how the system manages the network connection through that physical NIC.
+
+NIC: Think of it as a port or slot where you plug the cable.
+Cable: The physical connection that allows data to travel.
+Network Interface: The software side (like eth0) that uses the NIC to send and receive data.
+
+In short, you plug the Ethernet cable into the NIC, and the NIC makes it possible for the computer 
+to connect to the network.
+
+
+
+Each NIC card will be having MAC  (Media Access Controller) address to avoid conflicts 
+between same NIC adapters.
+
+Imagine your computer and your phone are on the same Wi-Fi network.
+
+Your computer's MAC address might be: 00:1A:2B:3C:4D:5E.
+Your phone's MAC address might be: F0:2F:3D:4E:5F:6A.
+These unique MAC addresses allow the router to know which device is sending and receiving data.
+
+---------------------
+Linux NIC adapters rep by "eth" using comment if config.
+
+For example if two NIC cards are there in a system then it will be denoted as   "etho","eth1", .....etc.,
+
+-----------------------------------------------------------------------------------
+NIC in linux;
+NIC:Network interface is a connection point for sending and receiving data.
+
+                                                   Physical NICs (PHY)
+What: Real hardware that connects to a network.
+
+Examples:
+
+eth0: Wired Ethernet connection.
+wlan0: Wireless (Wi-Fi) connection.
+Used for: Connecting to the internet or local network.
+
+ip link show eth0   # For Ethernet
+ip link show wlan0  # For Wi-Fi
+
+-----------------------
+                                                           Virtual NICs
+What: Software-based network interfaces, not tied to physical hardware.
+
+Examples:
+lo: Loopback interface (connects to itself).
+br0: Bridge interface (connects multiple networks).
+tun0: Tunnel interface (used by VPNs).
+Used for: Virtual environments or secure connections (e.g., VPN)
+
+ip link show lo    # Loopback interface
+ip link show br0   # Bridge interface
+ip link show tun0  # VPN tunnel interface
+
+
+-----------------------
+Physical NICs: Real hardware for network connections (Ethernet/Wi-Fi).
+Virtual NICs: Software-based for things like virtual machines or VPNs.
+=========================================================================================
+Windows uses physical NICs (Ethernet/Wi-Fi).
+EC2 uses virtual NICs (ENIs or eth0) to connect VMs to networks in the cloud.
+-------------------------------------------------
+                                                 What is a packet?
+A packet is a small chunk of data with an address, sent over a network. 
+It’s like a letter in an envelope, where the letter is your data and 
+the envelope contains the address and information.
+
+In Linux, when you send data over a network, it is broken down into smaller packets.
+ Each packet is sent individually to the destination and then reassembled into the complete data.
+
+When you ping a website like google.com, your computer sends small packets to Google’s server, 
+and the server sends them back, letting you know if the connection works.
+If you want to check if a server is reachable, you can run:
+
+ping google.com
+This command sends packets to Google, and if they come back, it means the network is working.
+
+A packet is a small piece of data that travels across the network.
+Linux breaks down larger data into packets and sends them to their destination.
+--------------------------------------------------------------------------------
+
+3.Media is nothing but cable to connect two or systems. Example :  RJ 45, CAT 5 and CAT 6, ....etc.,
+----------------------------------------------------------------------
+4. Topology-  Topology is a design in which the computers in network will be connected to each other.
+Example for topologies 	are Bus, Ring, Star, Mesh, Tree topologies. Connectivity method.
+
+Star Topology: All computers connect to a central hub (like a switch).
+Ring Topology: Computers are connected in a circle, with each device linked to two others.
+----------------------------------------------------------------------------------
+Switch - is like powerbank, allow devices to connect with in room.
+router also has switch inside.
+eg: In a school computer lab, a switch allows each computer to share files and access the internet.
+----------------------------------------------------------------------------
+Router-can combine multi network to gether.
+IPS(Network cable)-Modem(Connects directly to the internet.)-router(Splits an internet connection to several devices.,
+ Requires a modem to connect to the internet.)
+ eg:  At home, your router connects your Wi-Fi devices (phones, tablets, etc.) to the internet.
+
+-switch outside of the router.
+
+ISP Cable → Modem (connects to the internet)
+Modem → Router (splits the connection)
+Router → Switch (distributes internet to multiple devices)
+=================================================================================
+OSI-Open sys interconnection - communication model of 7 layers
+1. service- set of actions that layer after another layer
+2. Interface - communication b/w layers.
+============================================================================
+Network sys geography:
+1. Local Area Network    All computers in a school lab are connected through a LAN.
+2. WAN (Wide Area Network): Covers a large geographical area, such as multiple cities or countries.
+3. MAN (Metropolitan Area Network): Covers a city-wide area.
+4. CAN- College computers
+5. PAN (Personal Area Network):  (phone hostpot).
+======================================================================================================
+
+SSH (Secure Shell) is a secure way to connect to another computer over a network. 
+It lets you log in and run commands remotely while keeping your data safe with strong encryption.
+ SSH usually works on port 22.
+======================================================================================
+                                            Protocols: Rules for sending and receiving data over a network.
+
+TCP/IP - Transmission Control Protocol and Internet Protocol 
+eg:TCP/IP: Used for things like email, web browsing, and downloading files 
+where it’s important that all data arrives correctly. 
+For example, when you download a document, 
+TCP/IP makes sure every part of the fileis received accurately.
+-----------------------------------------------------------------------------------------
+UCD- User 	Datagram Protocol//
+: Used for fast activities like streaming videos and online games. 
+It focuses on speed, so some small parts might be missed, 
+but it keeps things running smoothly without delays.
+
+=======================================================================================
+TCP                               UDP
+
+1.Reliable protocol             1.Unreliable faster than  TCP
+2. FTP,HTTP/s                   2. DNS,DHCP,ARP.. fast data transfer  
+3.SSH,SMTPS,
+
+--------------------------------------------------------------------
+When we say a protocol is "reliable," it means it has built-in checks to make sure that:
+
+All parts of the data arrive at their destination.
+The data arrives in the correct order.
+--------------------------------------------------------------
+HTTP: http://example.com
+HTTPS: https://example.com
+When to Use HTTPS:
+Sensitive Information: Always use HTTPS when transmitting sensitive information,
+ such as passwords, credit card details, and personal data.
+ 
+Websites: Use HTTPS for all websites to ensure data privacy and security for users.
+
+APIs: Use HTTPS for APIs to protect data in transit.
+------------------------------------------------------------------------
+Summary:
+HTTP: Unencrypted, suitable for non-sensitive data, uses port 80.
+
+HTTPS: Encrypted, essential for sensitive data, uses port 443, provides data integrity and authentication.
+
+Using HTTPS is a best practice for securing web communications and protecting user data from potential threats.
+
+------------------------------------------------------------------------
+                                                       Ports: 
+These are like doors on your device that allow data to enter or leave for specific services.
+
+eg: Laptop, USB, Charger port ==== same for mail service, FILE TRansfer, web service 
+
+S/w level - port is logical construct that is used to identify the process or the network service that is being used.
+
+
+Port no: help us to get connect to a particular server on the system. 0 to 65535
+
+
+port associated with the IP address:
+
+1. Well known ports - 0 to 1023. eg: DNS,HTTPS,HTTP, FTP....
+2. Registered Ports - 1024 to 49151 eg: tomcat server reg port no with 8080.
+3.Private Ports-49152 and 65535.
+
+ 
+Network Protocols     Service Names:         Port no:
+1.HTTP                 Web                    TCP80
+2.HTTPS               server web              TCP443
+3. DNS                Domain name service     UDP53
+4. FTP                File transfer           TCP20,21
+5. SSH                Secure shell terminal    TCP 22
+
+
+eg: Running web server
+1. food court (IP addrss)  sending req on (Https 443) - multi cusines(port nos)
+
+port no 1. Indian
+port no 2. Chines.... Port no serving diff services.
+
+www - world wide web. all public page  or  web site user can access to local computer and other devices thrugh internet.
+https://www.zomato.com/restaurants
+
+
+https - Protocol:
+Ensures secure communication between your browser and Zomato's servers.
+Protects sensitive information, like login or payment details.
+
+www - Subdomain:
+Indicates it’s a publicly accessible web service.
+
+zomato.com - Domain Name:
+The main address (like the food court's name) where users can access Zomato's services.
+
+/restaurants - Directory/Path:
+Refers to the specific section (menu) of the website that lists restaurants.
+
+-----------------------------------------------
+Port Analogy for Zomato
+Zomato's server is the food court (IP address).
+The server has different ports (counters) to serve various requests:
+Port 443: Handles secure HTTPS requests for browsing and ordering.
+Port 80: (if HTTP is used) Handles basic, unsecured web browsing requests.
+Database Port (e.g., 3306 for MySQL): Stores restaurant data, user reviews, and orders.
+
+When you visit Zomato, your browser connects to the server via Port 443 (HTTPS) 
+to securely fetch restaurant details.
+
+
+website: a collection of  webpages and related content that is identify by common domain name and
+published on at least one web server... 
+Notable webiste: (google,fb)
+==============================================================================================
+What is Webserver
+----------------------
+A Web server is a program that uses HTTP (Hypertext Transfer Protocol) 
+to serve the files that from Web pages to users, in response to their request.
+
+Ex:
+1) Apache HTTP Server
+2) Internet Information Services (IIS)
+3) nginx
+4) httpd by Apache
+
+
+What is httpd
+---------------------
+HTTP Daemon is a software program that runs in the background as a web server.
+It waits for the incoming server requests. The daemon answers the request  and
+serves the hypertext and multimedia documents over the Internet using HTTP.
+
+=======================================================================================================
+In short: IP addresses allow devices to find and talk to each other on the internet or a local network.
+(Internet Protocol address)
+IP Address: This is a unique address assigned to a network interface, 
+allowing it to communicate on a network.
+ The IP address identifies your device on a network, like 192.168.1.5 for a wired connection or 192.168.0.1 for a wireless one.
+
+Each network interface (like eth0, wlan0) is assigned an IP address to communicate with other
+ devices on the network. The IP address allows the interface to send and receive data.
+
+Example:
+Network Interface: eth0 (Ethernet interface)
+IP Address: 192.168.1.5 (assigned to eth0)
+Without an IP address, a network interface can't communicate on the network because there's no way to identify it.
+-----------------------------------------------------------------------------------------------------
+IP address: 1. Numeric address 2. Every device has IP  address for communication.
+3. IP address to identify for a computer or device on a network.
+------------------------------------------------------------------------------------------------------------------------------
+
+IPv4:
+Length:IPv4 has 32 bits. split into 4 parts, called octets (each 8 bits).
+192.168.1.0.
+Each bit can be either a 0 or a 1 (like a switch that's either "off" or "on").
+So, for 8 bits, you can create many combinations of 0's and 1's.
+
+How many combinations of 0's and 1's?
+Each bit has 2 possible states: 0 or 1.
+For 8 bits (one octet), the total combinations are:
+=256 combinations.
+
+This means that an octet can represent 256 different values, ranging from 0 to 255.
+----------------------------------
+
+Class	Range	Usage	First Octet Range
+A	0.0.0.0 to 127.255.255.255	Large networks	0 to 127
+B	128.0.0.0 to 191.255.255.255	Medium-sized networks	128 to 191
+C	192.0.0.0 to 223.255.255.255	Small networks	192 to 223
+D	224.0.0.0 to 239.255.255.255	Multicast	224 to 239
+E	240.0.0.0 to 255.255.255.255	Research	240 to 255
+
+IPv4 addresses are 32 bits long, allowing for (2^{32}) unique addresses: 
+[ 2^{32} = 4,294,967,296 \text{ (approximately 4.29 billion addresses)} ]
+
+---------------------------------------------------------------
+Why does the range go from 0 to 255?
+Let's see what the numbers look like:
+If you have 8 bits (like: 00000000), you get the smallest value, 0.
+If you have all 1's (like: 11111111), you get the largest value, 255.
+
+Here’s how 255 is calculated:
+Each bit in the octet represents a power of 2:
+The leftmost bit is worth 128 (2^7).
+The next bit is worth 64 (2^6), and so on.
+When all bits are set to 1 (11111111), it adds up like this:
+
+128+64+32+16+8+4+2+1=255.
+2^7+2^6+2^5+2^4+2^3+2^2+2^1+2^0=255
+
+-----------------------------------------------------------
+Total Addresses:
+IPv4 addresses are 32 bits long, allowing for (2^{32}) unique addresses: 
+[ 2^{32} = 4,294,967,296 \text{ (approximately 4.29 billion addresses)} ]
+
+But we ran out of public IPs, so we use private IPs like 192.168.x.x.  for  shortage created private IP.
+
+Binary Representation (IPv4 Example: 192.168.1.0):
+192.168.1.0        
+
+
+192 is 1st oct= 128+64  Binary(0's 1's) format will be 11000000              128+64= 192
+168 is 2nd oct= 128+32+8  binary format will be       10101000                     128+32+8=168
+1             =                                       00000001 
+0             =                                       00000000
+
+==========================================================================================================
+IPV4 - over 4 billion address available (2power 32 means 4 biilion)
+2. IPV6  128/no oct - classses.   
+Pv6 was created because IPv4 ran out of addresses. 
+It provides many more IP addresses for devices and improves network efficiency, security, and setup.
+
+Key points:
+IPv4 has limited addresses, but IPv6 offers a huge number.
+IPv6 makes devices easier to connect and more secure.
+
+
+============================================================================================================
+1. Public IP and Private IP.   
+
+ISP assigns IP address to modeum(reg on the internet) - so we can access to www.
+without IP we can't access internet. Unique no. IPV4 - over 4 billion address available - 
+for  shortage created private IP.
+
+Can't access internet in private IP. So private IP converts to public before access.
+
+Network Address Translation (NAT):
+Function: NAT translates private IP addresses to a public IP address before accessing the internet.
+Example: Your router gets one public IP from your ISP and connects all your devices 
+to the internet using that public IP.
+eg:
+1. Phone1,phone2..(private ip) -- router(public IP) - Internet.
+
+Private IP translated to Public IP called NAT(Network address translation).
+---------------------------------------------
+IP classes The classes are  A,  B, C, D, E and the ranges are given below.
+
+Private IP's  
+
+Class	Private IP Range	Example Use Case
+A	10.0.0.0 to 10.255.255.255	Corporate network for thousands of employees
+B	172.16.0.0 to 172.31.255.255	University assigning IPs to labs and departments
+C	192.168.0.0 to 192.168.255.255	Home network, Wi-Fi router assigning IPs to devices
+
+Public IP: Assigned by ISP, unique, required for internet access.
+Private IP: Used within local networks, assigned by router, requires NAT for internet access.
+NAT: Translates private IP addresses to a public IP address.
+IP Classes: A, B, C with specific ranges for private IP addresses.
+==========================================================================================================
+
+
+Linux has default files and folders that store system settings and information, 
+like a "database" for managing operations.
+
+1. /etc/sysconfig/network
+What it does: Turns the network on/off and sets the system name.
+Why important: Keeps basic network settings permanent.
+
+NETWORKING=yes     # Turns the network ON
+HOSTNAME=myserver  # Sets system name to 'myserver'
+
+Hostname: Shows the name assigned to the system.
+----------------------------------------------------------
+2. /etc/sysconfig/network-scripts/
+What it does: Controls each network connection (like Wi-Fi or Ethernet).
+Why important: Manages how your system connects to networks.
+Example file: /etc/sysconfig/network-scripts/ifcfg-eth0
+
+
+DEVICE=eth0         # Name of the network card
+BOOTPROTO=dhcp      # Automatically get IP address
+ONBOOT=yes          # Start the network when the system starts
+------------------------------------------
+3. /etc/hosts
+What it does: Maps names to IP addresses (like a mini phonebook).
+Why important: Helps find systems on the same network.
+
+192.168.1.10 myserver  # 'myserver' points to IP 192.168.1.10
+
+How it works: Type ping myserver → Connects to 192.168.1.10.
+-----------------------
+4. /etc/resolv.conf
+What it does: Points to DNS servers (convert website names to IPs).
+Why important: Helps find websites on the internet.
+
+Example content:
+nameserver 8.8.8.8  # Use Google’s DNS to resolve names like google.com
+
+How it works: Type ping google.com → Finds its IP using 8.8.8.8.
+
+==============================================================================================
+Real-life Scenario:
+
+File: /etc/hosts
+If you add 192.168.1.100 testserver, typing ping testserver will connect to 192.168.1.100.
+
+File: /etc/resolv.conf
+Add nameserver 8.8.8.8, and it will use Google DNS to convert google.com to an IP.
+======================================================================================
+2ways to configure network...1. static network 2. dynamic network.
+
+Satic ip:
+You give your system a fixed address, like giving it a permanent house address.
+IP address: 192.168.1.100
+This address won't change even if the system restarts. It's always 192.168.1.100 when you want to find it.
+
+ Dynamic IP (DHCP)
+What it means: The system gets a new address every time, like when you get a new house address each time you move.
+Example:
+IP address: 192.168.1.101 today, but next time it might be something else like 192.168.1.102 after a restart.
+The address changes automatically every time you restart the system.
+
+Static IP (Google): Google Search Engine, Google Cloud services.
+Dynamic IP (Google): Google Home, Gmail user connections.
+==================================================================================
+Network Service: Check if the network is active:
+
+systemctl status network
+------
+Ping Command: Check internet connection:
+ping www.google.com
+0% packet loss: Internet is working.
+100% packet loss: No connection to the server.
+Press Ctrl+C to stop the ping test.
+
+
+whenver we tried to check netwrok, the data send form of packets to google,now google will recive 
+and send them back to same server.
+ping 192...dummy server..100%packet loss-  I don't have connnectivty to this server.
+=======================================================================
+
+SELinux helps control who can access things on your system (like files and programs).
+
+Two Modes:
+Enforcing: SELinux checks everything. If something is not allowed, it stops it.
+Permissive: SELinux doesn't block anything but just logs what would have been blocked.
+---------------------------------------------------------
+Commands:
+getenforce: Check if SELinux is on or off.
+setenforce 0: Switch to Permissive mode (no blocking, just logging).
+setenforce 1: Switch to Enforcing mode (blocks anything that’s not allowed).
+------------------------------------------------------------------
+Files:
+/etc/selinux/config: This file controls if SELinux is on or off.
+Log File: /var/log/audit/audit.log logs SELinux activity.
+In simple terms, SELinux is a security tool that decides what users and apps can do on your system.
+======================================================================================================= 
+

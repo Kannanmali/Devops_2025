@@ -1,0 +1,358 @@
+Interview que:
+
+1.common understanding or day day basis use, Commonly used the shell commands?
+ls 
+cp
+mkdir
+touch
+vim
+grep 
+ppl may say netcat route trace route but - thses onkly we debug.
+Frst explain the basic commands  and debiging command like top sar df - tell use regulary this command 
+used command.. additional also u can add.
+PURPOSE - check we regular use this commands are not?
+------------------------------------
+2.Simple ss to list all the process?? 
+ps-ef, awk 
+
+--------------------------------------------------------------
+3.write a sxript to print only errors from a remote log.
+1.all logs getting store in google storeage or all logs in s3 bucket.
+we can get entire log using the API call.
+To reterive any log rfom remote server using ss CURL command.
+curl,grep and pipe-- by using 3 commands.
+-------------------------------------------------------------------
+
+
+4.write a ss to print numbers divided by 3&5 and not 15.
+(print even no)(print odd or prime etc,,,)(print divisible by 3)
+even - we check if nio divsible by 2 for for odd not divisible by 3...
+
+vim samplescrip.sh
+
+#!/bin/bash
+# Divisible by 3 or 5, but not by 15
+
+for i in {1..100}; do
+    if [ $((i % 3)) -eq 0 ] || [ $((i % 5)) -eq 0 ] && [ $((i % 15)) -ne 0 ]; then
+        echo $i
+    fi
+done
+
+This loop runs from 1 to 100, with i taking each value from 1 to 100.
+
+(( )): Used for arithmetic calculations.
+This checks if i is:
+
+[ ] is for general condition testing, including strings and comparisons, 
+while (( )) is for arithmetic operations.
+
+Divisible by 3 (i % 3 == 0)
+Or divisible by 5 (i % 5 == 0), but
+Not divisible by 15 (i % 15 != 0).
+
+Echoing the number:
+
+If the condition is true, the number is printed.
+The numbers printed will be those that are divisible by 3 or 5, but not by 15. For example:
+
+
+
+3
+5
+6
+9
+10
+12
+18
+20
+21
+24
+25
+27
+30
+35
+36
+39
+40
+42
+45
+48
+50
+51
+54
+55
+57
+58
+60
+63
+65
+66
+69
+70
+72
+75
+78
+80
+81
+84
+85
+87
+90
+93
+95
+99
+
+
+---------------------------------------------------------
+
+#!/bin/bash
+# Multiply numbers from 1 to 10 by 2
+
+for i in {1..100}; do
+ result=$((i  *2))
+
+echo "$i * 2 = $result"
+done
+-------------------------------------------------------
+
+#!/bin/bash
+# Divide numbers from 1 to 10 by 2
+
+
+for i in {1..10}; do
+    result=$(( $i / 2))
+    echo "$i / 2 = $result"
+done
+-------------------------------------------
+1 / 2 = 0
+2 / 2 = 1
+3 / 2 = 1
+4 / 2 = 2
+5 / 2 = 2
+6 / 2 = 3
+7 / 2 = 3
+8 / 2 = 4
+9 / 2 = 4
+10 / 2 = 5
+-------------------------------------------------
+
+#!/bin/bash
+# Subtract 2 from numbers 1 to 10
+
+for i in {1..10}; do
+    result=$((i - 2))
+    echo "$i - 2 = $result"
+done
+---
+1 -2 = -1
+2 -2 = 0
+3 -2 = 1
+4 -2 = 2
+5 -2 = 3
+...
+98 -2 = 96
+99 -2 = 97
+100 -2 = 98
+--------------------------
+
+
+-----------------------------------------------------------------------------
+here is a shell script to print only even numbers from 1 to 100:
+
+
+#!/bin/bash
+# Print even numbers from 1 to 100
+
+
+ for i in {1...10}; do
+ if [ $((i % 2)) -eq 0 ]; then
+ echo $i
+ fi
+ done
+ 
+ odd 
+ 
+ #!/bin/bash
+# Print odd numbers from 1 to 100
+
+for i in {1..100}; do
+    if [ $((i % 2)) -ne 0 ]; then
+        echo $i
+    fi
+done
+===============================================================================
+5.which script to print number of "K" in kannankaka
+
+#!/bin/bash
+X=kannankaka
+
+grep -o "k" <<< "$X" | wc -l
+
+
+The string kannankaka contains 3 occurrences of the letter k.
+
+3
+----------------------------------------------
+
+
+grep is a command-line utility for searching plain-text data for lines that match a regular expression.
+ The -o option tells grep to print only the matching parts of the lines.
+ "k" is the pattern to search for.
+------------------------------
+ <<< "$X":
+
+This is a here-string, which provides the string "$X" as input to the grep command.
+"$X" is the value of the variable X, which is kannankaka.
+----------------------------------------------------------------
+This is a pipe, which takes the output of the command on its left (grep -o "k" <<< "$X") 
+and uses it as input for the command on its right (wc -l).
+------------------------------------------------------------------------
+6.How will debug the shell script?
+set -x it will run the script in debug mode or we can able to troubleshoot your ss.
+
+7.What is cront tab in linux? example?
+crontab -> 
+
+Report of node health at 6:pm daily-- so instaed daily doing
+we can set our cron tab to 6:00 pm l;inux auto exce script gives the o/p.
+so we can store in s3 or specific folder we can.
+----------------------------------------------------------
+8.How to open a read only file?
+vim kannan.txt instaed  vim -r kannan.txt  -r means file will open in read only mode.
+--------------------------------------------------------------
+9.diff bw soft and hard link?
+in linux 2 links when we create file and save a file.-- it gets saved in memory or on disk.
+we want to create copy or reuse we can use hard link.. instaed of cp command we can cerate hard link 
+we can create copy and can mirror as specific file.(useful for secrete or imp files)
+if files gets delted from memory still file exist hard link will keep the file.
+
+You have a file named file1.txt:
+
+echo "Hello" > file1.txt
+
+#Create a hard link to it:
+
+ln file1.txt file2.txt
+
+Hard links cannot link directories.
+They are tied to the data directly, so deleting the original file doesn’t delete the data.
+----------------------------------------
+
+but soft link-It’s like a shortcut to the original file. 
+If you delete the original file, the shortcut (link) becomes useless.
+
+ln -s file1.txt file3.txt
+Soft links can be created for both files and directories.
+The link is a reference to the file, and if the target file is deleted, the link is broken.
+----------------------------------------------------------------------------------------
+9.what is diff bw break and continuos statment?
+break: Stop the loop.
+continue: Skip the current iteration and continue the loop.
+
+
+for i in {1..10}; do
+  if [ $i -eq 5 ]; then
+    break  # Stop the loop when i is 5
+  fi
+  echo $i
+done
+--------
+for i in {1..10}; do
+  if [ $i -eq 5 ]; then
+    continue  # Skip printing 5
+  fi
+  echo $i
+done
+============================================
+10.disad:
+
+#!/bin/bash
+SOURCE_DIR="/home/user/data"
+DEST_DIR="/home/user/backup"
+
+cp -r $SOURCE_DIR $DEST_DIR
+echo "Backup completed from $SOURCE_DIR to $DEST_DIR"
+
+-----------------
+Portability:
+It might not work on all systems (e.g., macOS or Windows) because the commands could be different.
+
+No Error Handling:
+The script does not handle errors. For example, if the source or destination directory does not exist, the script will not provide any feedback or stop execution.
+Example: If /home/user/data does not exist, the script will silently fail, and no backup will occur.
+
+Lack of Compression:
+
+The backup is just a simple copy of files, which could take up a lot of space, especially for large directories. It doesn't compress the backup files to save space.
+Example: If you're backing up a large directory (e.g., 50 GB), the backup will take the same amount of space, which could fill up storage quickly.
+-----------------------------------------------------------------------------------
+11.diff types of loops?
+12.Is bash dynamically or statically typed and why??
+Bash is dynamically typed because you don’t need to specify what type of data a variable holds. 
+It automatically adjusts based on the value assigned.
+x=10   # x is an integer
+x="Hello"   # x is now a string
+So, Bash decides the type of the variable based on what value you give it.
+-----------------------------------------------------------------------------------
+12.explain abt a network troubleshooting tool?
+why network is slow??Traceroute helps you see where delays happen in your network.
+
+
+traceroute googl.com
+This tells the system to trace the path from your computer to google.com.
+
+Traceroute will show you the path (hops) your data takes, like this:
+1  192.168.1.1  2 ms  3 ms  2 ms
+2  10.0.0.1     5 ms  4 ms  5 ms
+3  216.58.216.164  10 ms  12 ms  11 ms
+4  * * *
+5  google.com   20 ms  18 ms  19 ms
+
+Hop 1: This is your local network (your router). It's fast (2ms).
+Hop 2: Another router in your network, also fast (5ms).
+Hop 3: Google's server (216.58.216.164). Latency is good (under 20ms).
+Hop 4: No response here, which could mean the router is blocking the traceroute.
+Hop 5: Finally, google.com is reached, and it's fast.
+
+Why Is the Network Slow?
+High latency: If you see a hop with high times (e.g., over 100ms), it means that part of the network is slow.
+
+Blocked hops (* * *): Some routers block traceroutes. 
+This doesn't necessarily mean there’s an issue, but it can hide problems.
+------------------------------------------------------------------------------------
+By looking at where delays (high times) or timeouts (* * *) happen, 
+you can figure out where the issue is and fix it.
+
+13. how will you sort list of names ina file??
+sort filename.txt
+This command sorts the names alphabetically in the file.
+------------------------------------
+14.How will u manage logs of sys that gen huge log file everyday?
+A log is simply a record of what happens on a system or application. 
+It keeps track of events and errors to help understand the system's activity.
+Web server log: A log for a website might record every time someone visits the site,
+ including errors like "page not found."
+ 
+Example content of a web server log (access.log):
+192.168.1.1 - - [12/Jan/2025:06:00:12 +0000] "GET /index.html HTTP/1.1" 200 1024
+192.168.1.2 - - [12/Jan/2025:06:05:45 +0000] "GET /about.html HTTP/1.1" 404 512
+
+Error log: If something goes wrong, such as an issue with a web page, 
+an error log will record it. Example content of an error log (error.log):
+[Sat Jan 12 06:05:45 2025] [error] [client 192.168.1.2] File not found: /home/user/about.html
+Logs help you understand what happened on your system or application,
+ identify problems, and track activities. 
+ For example, you can look at error logs to see if any page requests failed or track the uptime of a service.
+ ===============================================
+ My que?? how do we prevserver (if we keep storage the disk gets incr and incr)
+ for that logrotate 
+ we can eff manage the logs (like how many days we need to rotate the log,24hrs after zip this log,
+ create compressed version of zip file and after 30days delete the log file)
+==========================================================================
+
+
+
+
+
+

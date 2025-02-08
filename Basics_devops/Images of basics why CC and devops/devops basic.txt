@@ -1,0 +1,129 @@
+Day 1:
+https://github.com/Kannanmali/AzureDevOps-Zero-to-Hero
+
+
+why Cloud Computing?
+
+owner of small IT firm-scale your buisness-or need large no of resources like,
+Office space,more hardware,furntinure,lot of people to manage and lot of money..
+This are captial expenditures.
+Now recurring expenses:cost of regular harware manitance,salaries to employes,electicity bills,
+monthly rents of busilding..--This are operational expensive..
+
+Stop?? minize the expenses.. and build system that scalable,high available,security,high performance.
+Use Cloud computing:
+
+Cloud Computing?
+To run an application, you must purchase computing, storage, and hardware. 
+Cloud computing minimizes these upfront expenses, and you can rent or lease hardware 
+from cloud providers such as AWS/Azure/GCP.
+
+CC is way to access these computer resources and services over the internet.
+Instaed of having to buy and managing your self.
+
+buy the hardware nooooo=== rent everything...
+eg:
+We need to run sw progarme to store large files-instaed of buying hard disk drive.
+rent storage like aws s3 or azure storage--where we can store and make use of it remotly.
+
+Iaas:
+infra as of service.
+gives full control over infra resources like VM/storage etc.
+You must takecare of all admin tasks like patching,upgrades and backup..
+Pay as per use.
+AWS EC2, Google Compute Engine, Azure VM
+
+---------------------------------
+Patching means fixing issues or improving software by applying updates.
+Your Linux server has software that is outdated and vulnerable.
+The company releases a "patch" (a small update) to fix it.
+sudo yum update  
+Patching = Fixing problems by updating.
+--------------------------------------
+Platform as a service.
+Paas:PaaS = A ready-made platform to deploy apps and start using it.
+Heroku, Google App Engine, Azure App Service
+
+---------------------------------------
+Saas= Software as a service.
+SaaS: You directly use the software (e.g., Google Docs).
+Gmail, Google Drive, Salesforce
+
+IaaS: You control everything (OS, apps, etc.).
+PaaS: You focus on building apps; platform is managed.
+SaaS: You just use the software; everything else is managed.
+
+IaaS = Rent a house (you manage it).
+PaaS = Furnished house (you live in it).
+SaaS = Hotel room (just enjoy the service)
+==================================================================================================
+waterfall model in SDLC?
+ref SS-bcz of this results customer unhappy-burnt out team with lot of work-budget issue.
+work long delivery time or maing changes.
+To fix advance model== Agile..
+ref SS.== happy customer,more cost effcetive,product deliver is on time,priorties changes.
+
+Devops??=This devops cycle brings evry team together-achive org goal effectively and effeciently.
+===============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

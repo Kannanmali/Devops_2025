@@ -1,0 +1,160 @@
+User management means managing user. ie., Creating the users, deleting the users and modifying the users.
+
+who - display who logged in
+w - display users are online what they are doing.
+users - list current users.
+who am i - what user your are loged in as.
+id - grp and user ID of current user.
+last - last usr who logged in to the sys.
+
+----------------------------------------------------------------------------------
+User and group admin.
+
+Root (Super User): The boss of the system, can do anything.
+Normal User: Regular people who use the system, can only do limited things.
+System User: Created by programs to run specific tasks (like for a web server).
+Network User: Used to access the system from other computers.
+Sudo User: Regular users who can temporarily act like the root user to do special tasks.
+Each user type in Linux is created for a specific purpose:
+
+
+
+| **User Type**   | **Example**      | **User ID**    | **Home Directory**      |
+|------------------|------------------|-----------------|-------------------------|
+| Super User       | Root             | 0               | /root                   |
+| Normal User      | ram, raju, gopal | 500 - 60000     | /home/<username>        |
+| System User      | ftp, ssh, apache  | 1 - 499         | /var/ftp                |
+| Network User     | LDAP user        | Same as normal  | /home/guests/ldapuser  |
+| Sudo User        | Normal users     | Same as normal  | /home/<username>        |
+
+
+================================================================================
+                               User Management Commands:
+Command	                                      Purpose            	       Example
+useradd <username>	                     Create a new user	           useradd john
+userdel <username>	                   Delete a user	               userdel john
+passwd <username>	               Set or change a user's password	   passwd john
+cat /etc/passwd	                View user information	               cat /etc/passwd
+cat /etc/shadow	                    View user passwords (encrypted)	   cat /etc/shadow
+
+What Happens After You Create the User:
+2 files are update:
+1./etc/passwd: This file stores basic information about the user.
+shiva:x:502:503::/home/shiva:/sbin/nologin
+
+shiva: The username.
+x: The password is stored in another file called /etc/shadow.
+502: The User ID (UID), which is a unique number for the user.
+503: The Group ID (GID), which is the user's primary group.
+/home/shiva: The home directory where the user's files will be stored.
+/sbin/nologin: This is the shell. If it says /sbin/nologin, it means the user cannot log into the system.
+--------------------------
+2./etc/shadow: This file stores the encrypted password and password settings.
+Example entry for root in /etc/shadow:
+root:$1$dklhdshf:1464:0:99999:7:::
+root: The username.
+$1$dklhdshf: The encrypted password.
+1464: The number of days since the password was last changed.
+0: The number of days after which the password must be changed.
+99999: The number of days before the password expires.
+7: The number of days before the password expires when the user will be warned.
+========================================================
+
+1.Useradd <option> <username>
+Options are:
+-u userid
+-G secondary group id
+-g primary group id
+-d home directory
+-c comment
+-s shell
+To create a user named shiva with:
+
+User ID 1001
+Primary group staff
+Secondary group devops
+Home directory /home/shiva
+Comment: "Shiva the Developer"
+Using /bin/bash as their shell
+	
+useradd -u 1001 -g staff -G devops -d /home/shiva -c "Shiva the Developer" -s /bin/bash shiva
+==============================================================================
+Command	                                    Purpose	                    Example
+
+groupadd <groupname>	           Create a new group	                groupadd devops
+groupdel <groupname>	           Delete a group	                        groupdel devops
+cat /etc/group	                         View group details	                cat /etc/group
+=================================================
+gpasswd <groupname>        	Set or change the password for a group	              gpasswd devops
+gpasswd -r <groupname>   	Remove the password for a group	                    gpasswd -r devops
+cat /etc/gshadow	       View group password and group details	           cat /etc/gshadow
+=========================================================
+groupmod -n <newname> <oldname>	   Change the name of a group	            groupmod -n admin staff
+usermod -G <groupname> <username>	Add a user to a group	                usermod -G devops john
+gpasswd -a <username> <groupname>	Add a user to a group	              gpasswd -a john devops
+gpasswd -d <username> <groupname>	Remove a user from a group	            gpasswd -d john devops
+==========================================================================================================
+
+usermod -G changes all the groups the user is in.
+gpasswd -a just adds the user to a group without removing them from others.
+
+
+
+==================================
+2. Viewing Command History:
+cd /home
+ls -la
+cat .bash_history
+--------------------------------------
+cd /home: Move into the /home directory.
+ls -la: List all files in /home, including hidden ones.
+cat .bash_history: Shows the history of commands that the user has entered.
+=========================
+3. Setting Environment Variables:This file is for user-specific settings.
+which means it's used to set environment variables that only affect the current user.
+
+File: .bash_profile
+if you install a program like Maven on your system and want the user to be able to run it from the terminal,
+you add the program's path in the .bash_profile.
+
+Let's say Maven is installed in /opt/maven
+ To make it available in the terminal for the user "kannan":
+
+
+vi ~/.bash_profile
+
+Add these lines to set the Maven environment variables:
+export MAVEN_HOME=/opt/maven
+export PATH=$PATH:$MAVEN_HOME/bin
+
+export MAVEN_HOME=/opt/maven: Tells the system where Maven is installed.
+export PATH=$PATH:$MAVEN_HOME/bin: Makes Maven commands available from any terminal window.
+After adding this, whenever the user "kannan" opens a new terminal, they can type mvn to run Maven commands.
+
+--------------------------------------------------------------------------------------------------------
+2. .bashrc Example:
+This file is for system-wide settings that affect all users on the system, 
+like setting aliases or simple commands.
+
+ For example, if you want all users on the system to use a shortcut command like ll to list files
+ in a detailed format (ls -l), 
+ you can add that in the .bashrc.
+
+Setting up an alias to make ll show detailed file information for all users:
+sudo vi /etc/bash.bashrc
+add
+alias ll='ls -l'
+
+alias ll='ls -l': This makes the ll command show detailed file listings (like ls -l).
+After this, every user on the system will be able to type ll and 
+see detailed information about files and directories.
+
+.bash_profile is for individual user settings (like setting a program path for Maven).
+.bashrc is for global settings (like creating an alias ll for all users).
+------------------------------------------------------------------------------------------------
+Sys info:
+uptime: Shows how long the system has been running.
+uname -r: Shows the version of the system’s kernel.
+uname -a: Displays detailed system information.
+cat /etc/os-release: Shows the OS details (e.g., version).
+==================================

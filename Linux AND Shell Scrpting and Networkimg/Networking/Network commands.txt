@@ -1,0 +1,58 @@
+Linux network commands:
+
+1.ifconfig- Displays network interfaces and their IP configurations.
+
+ifconfig eth0
+This shows the details (IP address, netmask, etc.) of the eth0 network interface.
+
+
+----------------------------------------------
+2.ip  Shows or changes network interface settings.
+
+ip a
+This lists all network interfaces and their IP addresses.
+
+-----------------------------------------------------
+3.ping Tests if a server or device is reachable over the network.
+ping 192.168.1.1
+This sends small data packets to 192.168.1.1 and checks if the device responds.
+-----------------------------------------------
+4.netstat  Displays active network connections and their status (which ports are open, etc.).
+netstat -tuln
+This lists all active TCP and UDP ports that are open and listening for connections.
+--------------------------------------------------------------
+5.ss-Faster and more detailed version of netstat to display network connections.
+ss -tuln
+This shows listening ports and IP addresses, similar to netstat.
+-----------------------------------------------
+6.nslookup
+Finds the IP address of a domain name.nslookup google.com
+This looks up the IP address of google.com using DNS.
+
+nslookup google.com
+This looks up the IP address of google.com using DNS.
+----------------------------------------------------------
+7.traceroute
+ Traces the path your data takes to reach a destination.
+traceroute google.com
+This shows all the routers and devices your data passes through on its way to google.com.
+-----------------------------------------------------------------------------------------
+8.route
+Shows or changes your computer’s network routing table.route -n
+
+route -n
+This shows the current network routes and gateways in a numeric format.
+-------------------------------------------------------------------------
+9.iptables  Manages the firewall to control incoming and outgoing traffic.
+iptables -L
+This lists all the current firewall rules on your system.
+--------------------------------
+1o. curl - Sends or retrieves data from a server (often used to interact with web services).
+curl http://example.com
+This fetches and displays the content of http://example.com in your terminal.
+
+11.whois domain - diplay who is info for domain
+12.dig domain- display DNS info for domain
+13.host domain - display DNS IP for domain
+14. wGET link - DOWNLoad from location link
+15. curl link - diplay the HTML source of link

@@ -1,0 +1,48 @@
+Plain land-constructed house-1Acer. All resources park swmimg pool everythn-happily.
+Now I feel Don't need one acer just want 1/2 acer. But im watiing 1/2 acer.
+Idea-1/2 another property build-rent. both two not interfearing with each other resources. 
+Now effecinectly started using the resources.
+
+Devops is all about = imp effeciency==End goal..
+
+Real world sw industyr problem:
+Server=we have app in local laptop- we developed app- now wants deliver to customer.or real world.
+Google.com=hosted in public server that why we access it called server.
+Inside the server-- Google.com org bought 5 servers diff size-from HP. HP selling server.
+Sys admin bought 5 servers-they deplyed app1 server1(4GBRAM)and 4CPU. Size 100GB and 100Core.
+But we deployed app of 4GB and 4 cpu.
+
+All developers and testers using this to test your app. The app server probably tomcat serrver.
+I started this app on this server. but late relaize need only 4GB and 4CPU.
+wasting entire resources.. 
+Or I gave each 1 server to one one team-I reliaze that all are wating inefficienty using.
+Unutilzing 90% resoirces=== inefficiency...
+
+That's why virtuaization came into picture.
+---------------------------------------------------------------
+Physiacl server from IBM SEVER1-I have this concept I installed "Hypervuisor"
+Hypervuisor=SW that can install in VM on your bare metal or physiacl server.
+
+Now instated one I have created 5 servers-logical partition(logical isolation)-VM1 VM2 VM3 VM4
+
+they are Veritual macghines-don;t exsisyt physiacelly.Now I have added eff by adding the Hypervuisors.
+populsr hypervisor:
+1.VMware 2.Zen 
+we do logical isolation-we made logical machiesn. 
+Now team 1 can user VM1,team2-VM2 team3-VM3 3tc...
+
+VM=create Virtal env that functions as virtuel systems. this system has their own CPU,Own Memory,Hardware.
+So VM1 not depeding on VM2 for meomory or CPU or harware..thats why called logical own systems.
+Hypervuisor is doing this process -creating VM.
+---------------------------------------
+eg:Same concept followed in cloud platform.
+Amazon-mumbai--data centre--they take huge land and install physial servers-like 1000's... servers.
+Now user -- req -- AWS-- select mumbai-- req send the data center--- phy server--hypervisor installed in phy server.
+Then the hyperrviosr creats VM for you.  This is world of VM operts on Hypervisor
+----------------------------------------------
+Latency is the delay in data travel. Mumbai server is closer, so less delay. Singapore is farther, so more delay.
+Aws had data center in Singapore and serves installed using rackes.
+Aws admin created multiple racks like multiple serves
+If req ec2 VM- the hypervisor sees my req and allocates to me. Aws will give ip and key value pair to access 
+the resources. We're hosted on Singapore data center.
+====================================================================================================

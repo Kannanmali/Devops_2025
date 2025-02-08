@@ -1,0 +1,283 @@
+Software Managment-  Software management means handling the software on a computer, 
+like installing, updating, fixing, or removing it. DevOps engineers make sure these processes are easy 
+and smooth.
+
+Software: Software is  a collection of programs to perform some tasks or 
+manage systems, applications, databases ,...etc
+
+Package: Package is nothing but a software to perform some tasks. 
+Software is the basic of any O/S allowing to install
+and use different utilities. 
+====================================================================================================================================
+Package Management Tools:
+
+RPM (Red Hat Package Manager):
+RPM is the package management system used by Red Hat-based Linux distributions (like CentOS, Fedora, and RHEL)
+
+RPM (Red Hat Package Manager) is a tool used to install, update, and remove individual packages on your system,
+ but it doesn’t automatically handle dependencies (other packages the software needs to run).
+RPM: You use the .rpm file to install software manually.
+Example: rpm -ivh httpd.rpm
+
+-----------------------------------------------------
+Here's a table summarizing the **RPM commands** with their explanations and examples:
+
+| **Command**                      | **Description**                                                   | **Example**                                 |
+|-----------------------------------|-------------------------------------------------------------------|---------------------------------------------|
+| **`rpm -ivh <package-name>.rpm`** | Install a package with verbose output and progress indication     | `rpm -ivh httpd.rpm`                        |
+| **`rpm -qa`**                     | List all installed packages                                       | `rpm -qa`                                   |
+| **`rpm -e <package-name>`**       | Uninstall a package                                               | `rpm -e httpd`                              |
+| **`rpm -qi <package-name>`**      | Show detailed information about an installed package              | `rpm -qi httpd`                             |
+| **`rpm -V <package-name>`**       | Verify the integrity of an installed package                       | `rpm -V httpd`                              |
+| **`rpm -ql <package-name>`**      | List all files installed by the package                           | `rpm -ql httpd`                             |
+| **`rpm -ivh <package-name>.rpm --force`** | Force the installation of a package (ignores conflicts) | `rpm -ivh httpd.rpm --force`               |
+| **`rpm -qa --last`**              | Show the most recently installed package                          | `rpm -qa --last`                            |
+| **`rpm -qa | wc -l`**              | Count the number of installed packages                            | `rpm -qa | wc -l`                           |
+| **`rpm -qi <package-name>`**      | Query information about a specific installed package              | `rpm -qi httpd`                             |
+| **`rpm -qd <package-name>`**      | Query documentation files of a package                            | `rpm -qd httpd`                             |
+| **`rpm -qc <package-name>`**      | Query configuration files of a package                            | `rpm -qc httpd`                             |
+| **`rpm -R <package-name>`**       | List the dependencies required by a package                       | `rpm -R httpd`                              |
+| **`rpm -ivh <package-name>.rpm --test`** | Test the installation of a package without making any changes | `rpm -ivh httpd.rpm --test`                |
+| **`rpm -ql <package-name> | grep <search-term>`** | Search for specific files within an installed package | `rpm -ql httpd | grep bin`                  |
+
+### **Key:**
+- **-i**: Install
+- **-v**: Verbose output
+- **-h**: Progress (hash marks)
+- **-q**: Query
+- **-a**: All packages
+- **-e**: Erase (uninstall)
+- **-R**: Dependencies
+- **-V**: Verify integrity
+- **-l**: List files
+- **--force**: Force installation
+- **--test**: Test the installation
+- **--last**: Show most recent installs
+
+This table provides a quick overview of commonly used **RPM commands**. Let me know if you need more details!
+
+=======================================================================================================
+
+
+
+
+
+YUM (Yellowdog Updater, Modified)
+
+
+YUM is a tool that helps install, update, and remove software on Linux. 
+It automatically takes care of any missing software needed for the main package to work.
+
+RPM installs one package at a time manually.
+YUM installs the package and its required software automatically.
+For example:
+yum install httpd: Installs Apache server and any other software needed for it.
+============================================
+Files related to YUM:
+/etc/yum.conf: Configuration file.
+/var/lib/yum: Stores information about installed packages.
+=================================================================
+Log file:
+tail -f /var/log/yum.log: Shows YUM activity in real-time.
+======================================
+In short, RPM installs packages manually, while YUM handles everything automatically.
+NOTE: IN UBUNTU MACHINES WE
+WILL GIVE PACKAGE NAME INSTEAD
+OF httpd(apache)
+================================================================================================
+Here’s a simplified table of **YUM** commands with examples:
+
+| **Command**                           | **Description**                                    | **Example**                            |
+|---------------------------------------|----------------------------------------------------|----------------------------------------|
+| **`yum install <package-name>`**      | Install a package.                                | `yum install httpd`                    |
+| **`yum remove <package-name>`**       | Remove a package.                                 | `yum remove httpd`                     |
+| **`yum update`**                      | Update all installed packages.                    | `yum update`                           |
+| **`yum list installed`**              | List all installed packages.                      | `yum list installed`                   |
+| **`yum search <package-name>`**       | Search for a package.                             | `yum search httpd`                     |
+| **`yum info <package-name>`**         | Show details of a package.                        | `yum info httpd`                       |
+| **`yum clean all`**                   | Clean YUM cache.                                  | `yum clean all`                        |
+| **`yum history`**                     | Show YUM transaction history.                     | `yum history`                          |
+| **`yum history undo <transaction-id>`**| Undo a YUM action.                                | `yum history undo 3`                   |
+| **`yum repolist`**                    | List enabled repositories.                        | `yum repolist`                         |
+
+This should give you a clear overview of how to use **YUM** for day-to-day tasks in Linux.
+ Let me know if you need more!
+
+=======================================================================================
+
+
+APT (Advanced Package Tool) is a package management tool used in Debian-based systems like Ubuntu.
+ It allows you to install, update, and remove software packages in a way that handles dependencies automatically, just like YUM in Red Hat-based systems.
+
+APT works automatically to install a package and its dependencies.
+For example:
+apt install apache2: Installs Apache server with all necessary dependencies.
+APT-related Files:
+
+/etc/apt/sources.list: Contains the URLs of repositories for APT.
+/var/cache/apt/archives: Stores downloaded package files.
+Log files:
+
+/var/log/apt/history.log: Logs the history of package installations and removals.
+APT vs. YUM
+APT is used in Debian-based systems (like Ubuntu).
+YUM is used in Red Hat-based systems (like CentOS, Fedora).
+
+---
+
+### APT Commands with Examples:
+
+| **Command**                               | **Description**                                       | **Example**                           |
+|-------------------------------------------|-------------------------------------------------------|---------------------------------------|
+| **`apt install <package-name>`**          | Install a package.                                   | `apt install apache2`                 |
+| **`apt remove <package-name>`**           | Remove a package.                                    | `apt remove apache2`                  |
+| **`apt update`**                          | Update the package list from repositories.           | `apt update`                          |
+| **`apt upgrade`**                         | Upgrade all installed packages to the latest version. | `apt upgrade`                         |
+| **`apt list --installed`**                | List all installed packages.                         | `apt list --installed`                |
+| **`apt search <package-name>`**           | Search for a package.                                | `apt search apache2`                  |
+| **`apt show <package-name>`**             | Display detailed information about a package.        | `apt show apache2`                    |
+| **`apt clean`**                           | **`apt-cache policy <package-name>`**     | Show the installation details and repository source. | `apt-cache policy apache2`            |
+| Clean the local repository of downloaded packages.    | `apt clean`                           |
+| **`apt autoremove`**                      | Remove unnecessary packages that were installed as dependencies. | `apt autoremove`             |
+
+This should give you a simple overview of **APT** commands for day-to-day package management in Debian-based systems like Ubuntu. Let me know if you need more!
+=============================================================================================================
+APache web server:
+1.It's a program running on a computer (web server) that hosts websites.
+2.The server has an IP address and domain name (like www.example.com).
+
+How it Works:
+
+1.When you type a website address (like www.example.com/image.jpg), your browser asks 
+the server for the file.
+2.The server checks if the file exists and sends it back to your browser.
+3.If there’s an error (like the file is missing), it shows an error message.
+
+Apache (also called httpd) is a program that helps your computer send websites 
+to people when they ask for them. It acts as a web server.
+
+Why install Apache (httpd)?
+Serve websites: It sends your website's pages to anyone who visits your site.
+Host apps: It lets you run web applications.
+Manage traffic: It controls who can visit your website.
+
+When you run yum install httpd:
+
+Apache is installed.
+You can set up your website on your computer and share it with others.
+In Ubuntu, it's called apache2 instead of httpd.
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+Backup and Restore
+Archiving: Combine files into one for easier management. Commonly done with the tar command.
+
+Go to one folder:  backup and restore uses: 
+while backup compress the data and  while extarct restoring the data.
+---------------------------------------------------------------------------
+we need to have archive data normal data takes a lot of  time.
+
+tar means Tape Archive.
+It’s a tool for combining many files into one archive file for backup.
+
+
+Important Points:
+Backup: You can use tar to back up files and folders easily.
+File Size Limit: It doesn’t work well with files bigger than 80GB.
+Includes Everything: It saves all files, even those that have problems.
+
+
+
+=============================================================================================
+
+
+managing installed service:
+ 
+What is a Service or Daemon?
+A service or daemon is a program that runs in the background, 
+waiting to respond to requests or monitor changes on your computer.
+
+For example, the Apache server has a daemon called httpd
+ that listens for requests on port 80 and sends the appropriate web page back to the user.
+
+
+Common Examples of Services:
+
+Apache (web server)
+Samba (file sharing)
+NFS (network file system)
+FTP (file transfer protocol)
+
+----------------------------------------------------------------------------
+How to Control Services
+
+There are 2 commands used to control services:
+
+1. service :Using the service Command:
+This command starts or stops services during your current session.
+ However, any changes will not persist after a reboot.
+
+For example, to start the Apache service, you can run:
+service httpd start
+After rebooting, this service will not start automatically.
+
+
+
+2. chkconfig :
+This controls which services are set to start at boot time.
+These settings will be saved and applied at next boot.
+Changing these settings will not start the service immediately and
+ it will just flag them to be started from the next boot.
+ 
+ chkconfig httpd on
+
+===================================================================================================================================================================
+Managing installed services. eg: U installed httpd is service for linux server.
+
+To check if the httpd service is running, you can use:
+service httpd status
+
+
+Start the service: service httpd start, stop , restart---managed of installing service.
+
+ 
+
+Httpd service auto start when the server gets started.
+chkconfig httpd on
+it writes one service file /usr/lib/systemd/system/httpd.service
+===========================================================================================================================
+
+
+
+===================================================================================================
+Apt:A command for updating package lists on Ubuntu systems. Use:sudo apt update
+Before installing new software, it's a good idea to update your package lists to ensure
+ you get the latest versions.
+
+Wget:A command-line tool used to download files from the web.
+
+Curl-A ---curl stands for "Client URL." curl is a command-line toolthat helpsyou communicate with servers. 
+You can use it to get information from websites or send data to them.
+Why Use curl?
+Fetch Data: Like getting a webpage.
+Send Data: Like submitting a form or sending an API request.
+Download Files: Grab files from the internet straight to your machine.curl [options] [URL]
+
+1.Check if a Website is Up
+curl -I http://example.com
+This checks the website's status. If you see HTTP/1.1 200 OK, the website is working.
+
+2.Download a File
+curl -O http://example.com/file.txt
+What it does: Downloads file.txt from the website to your computer.
+Curl is a handy tool for DevOps engineers. It helps check website 
+status, send notifications, download files, and interact with APIs.
+ It makes many tasks easier when working with web services.
+ 
+ 
+ 

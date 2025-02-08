@@ -1,0 +1,127 @@
+Basic Concepts
+Volume: A block of storage in AWS that we can attach to an EC2 instance 
+(similar to an external hard drive).
+Partition: A way to divide a volume into smaller sections.
+Mounting: The process of making a storage device (like a volume)
+accessible at a particular point in the directory structure.
+
+
+You have an EC2 instance with one main storage volume (root volume). 
+You want to add another volume, partition it, format it, mount it, and make it permanently available, 
+even after a reboot.
+
+
+
+
+
+
+
+
+
+
+ec2 instance has one volume storage -  /dev/xvda 8gb is root volume.single volume.
+
+If server crash - data lost- concept called mounting- create one volume and attach to o/s - 
+ so vol applications file can store this called mounting.
+ 
+if server crashed doesn't happen to vol. so we can detacch and attach the server to another volume.
+-----------------------------------------------------------
+when come to pa /dev/xvdf max 4 partion on 3 primary and 1 is extended.
+
+Maximum of 4 partitions on a disk like /dev/xvdf.
+3 Primary partitions: These are the main partitions where data is stored 
+(e.g., /dev/xvdf1, /dev/xvdf2, /dev/xvdf3).
+
+1 Extended partition: This is used to create more partitions inside it.
+ It doesn’t store data directly but allows additional logical partitions (e.g., /dev/xvdf4).
+--------------------------------------------------------------------------------------------------
+ 
+ 
+ Steps to Attach, Partition, and Mount a New Volume:
+
+
+
+1. Attach the New Volume to Your EC2 Instance
+EBS- attach this volume to your EC2 instance.-2GB - same av zone.
+--------------------------------
+2. Check That the Volume is Attached
+sudo fdisk -l
+You should see a list of volumes. Look for your new volume, 
+which should be listed as /dev/xvdf. This confirms the volume is attached.
+--------------------------------------------------------------
+3. Partition the New Volume
+ A partition is like creating a section of the volume to store files.
+ 
+ sudo fdisk /dev/xvdf
+---------------------------------------------------------------------------------------------
+
+This opens the fdisk tool, which is used to create and manage partitions on a disk.
+((
+Create the Partition:
+
+In fdisk, do the following:]
+
+Type n and press Enter (to create a new partition).
+Type p and press Enter (to select primary partition type).
+Press Enter to accept the default partition number (usually 1).
+Press Enter to accept the default first sector.
+Type +2G and press Enter (to create a partition that is 2GB in size).
+
+Save and Exit:
+
+Type w and press Enter (to write the partition to the disk and exit fdisk).
+
+))
+------------------------------------
+sudo fdisk -l
+You should now see a partition named /dev/xvdf1, which is a 2GB partition on your new volume.
+=======================================================================
+4. Format the Partition
+To make the new partition usable, we need to format it with a file system 
+(a structure that organizes files on the partition).
+
+sudo mkfs.ext3 /dev/xvdf1
+This formats the partition with the ext3 file system, which allows the partition to store files.
+================================================================================
+5. Create a Directory to Mount the Partition
+sudo mkdir /root/appdata
+=========================================
+6. Mount the Partition to the Directory
+sudo mount /dev/xvdf1 /root/appdata
+
+This command mounts /dev/xvdf1 (the new partition) to the /root/appdata directory.
+Check the Mount:df -h
+This shows the disk usage. You should see /dev/xvdf1 listed with 2GB of space, mounted to /root/appdata.
+=============================================================================================
+7. Make the Mount Permanent
+
+To ensure that the mount stays even after a reboot, we need to add it to the /etc/fstab file, 
+which is a file where Linux stores information about permanent mounts.
+
+sudo vi /etc/fstab
+Move to the bottom of the file and enter the following line:
+
+/dev/xvdf1   /root/appdata   ext3   defaults   0   0
+
+This line tells Linux to mount /dev/xvdf1 to /root/appdata using the ext3 file system everytime the system starts.
+
+Save and Close the Editor:
+=============================================================
+Test the Configuration:
+
+Run: sudo mount -a
+This command checks if /etc/fstab is correctly configured and mounts any new entries.
+-----------------------
+Verify:
+Run df -h 
+again to confirm that /dev/xvdf1 is still mounted at /root/appdata.
+-----------------------------------------------------------------------------------------
+
+Now, your new 2GB volume is partitioned, formatted, and permanently mounted to /root/appdata, 
+and it will remain mounted even after a reboot.
+
+
+
+
+
+

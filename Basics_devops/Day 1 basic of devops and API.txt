@@ -1,0 +1,135 @@
+1. what is devops?
+Its a pract or culture that incr org ability to deliver the app.
+End of the day - org delivery the app. end goal- delivery..
+example.com- 10days taking for delivery.. (v1 to v2 for new feature)than thats not good practice.
+If app has a bug-instaged of taking 10days if all issues sort out and delivery in 1 hour 
+than its called devops.
+
+Devops- is a flow or process of building depolying app and monitoring app.
+
+CI/CD-devops is improving delivery and they have to include the automation process.
+chip company - made auto now delivery all in one day---also they look at quality as well.
+enduser-need quality   manufacture--needs fast delivery..(automation)
+
+Monitoring-how would ensure quaity maintaed-we have to build in monitoring.
+If anything issue in quality or issue in automation somebody -reports back to you. 
+that is monitoeing..
+
+Testing--imp aspect..
+-------------------------------------------------
+Interview queustions:
+
+Devops-process of imp "delivery(app delivery)" - making delivery quicker by proper "automation". 
+By ensurred "quality (maintained)"in place-"monitoing(continuos"or observability 
+-also u have contionus testing..    End goal- no manual process-during app delivery-fasten up the 
+process. 
+-----------------------------------------------------------------------------
+Goal-expect - app delivery in 2 weeks-reduce 2 weeks to one. but by ensuing all the above in place.
+--------------------------------------------------------------------------------------
+
+
+
+
+Why should i hire??
+WHy devops? 
+developer-write SC(anroid or static web app)-company example.com---end goal---
+Customer uses the app..  dev-write code   and customer -- receive the app.
+
+If no devops: end idea-- from dev laptop the app to deliver to customer end..
+1.once dev write code-put in central loaction-after that central loca--sys admin or build engg-
+create the server-they deploy the app on server..
+Then - tester test that app-on the server create by system admin..
+then build and release engg-he would promot to next level-pre prod.(well tested on pre prod)
+
+then the release engg take forward the app -- to customer on production server.
+
+App-developer--- code repo--  to Prod customer ===============Goal end Goal.
+------------------------------------------
+
+Sys admin-creates server--needs to test on server not laptop.(VM were used).
+
+BRE - build and relase engg.-he deployed app on to the server.
+To delopy there should be application server..
+
+Server admin-so this admin creates the app server.. 
+Simply deliver the app from developer laptop-- to customer--- entire process taking 10days.
+=====================================================
+All this manual--to automate--all the teams working together the deliver the app..
+Now to improve -- devops concept comes..
+Devpos======((Its a culsture(way of working)bcz new tools comes--adopt the new tools))
+improve process of deliver. 
+By ensurred "quality (maintained)"in place-"monitoing(continuos"or observability 
+-also u have contionus testing..    End goal- no manual process-during app delivery-fasten up the 
+process. 
+
+By all finally --- improves effeciency of the org that's role of devops.
+
+
+=====================================================================================
+
+How to introduce abt your self??
+
+Im working as devops engg- past 4 to 5 years. before Non IT....or system admin..
+
+roles:I take of auto - ensure qua maintain for app and ensure that cont monitoring.
+I have automated tetsing process to devops life cycle.
+
+(if interview asking tools we can mentioned)
+=============================================================================================
+
+
+
+
+     API
+
+API (Application Programming Interface) is a set of rules that allows one application to communicate with another.
+Zomato uses Google Maps API to show locations on its app. Instead of building its own maps, 
+Zomato sends requests to Google Maps' API, and Google responds with the map data.
+
+Client Makes a Request: Zomato req  to google maps- "Show the map for a restaurant's address."
+API Server Processes the Request: Google Maps receives the request and checks if it’s valid.
+API Responds: Google sends back the map data (coordinates, images, etc.) to Zomato.
+
+You’re a DevOps engineer managing cloud instances and want to get details of all active servers on AWS.
+1.Client-The client is your device or application where the request starts.
+2.Request-The client sends a request to the API server asking for data or a service.
+When you type curl https://api.example.com/users, your client is asking the server for user data.
+3.Server :The API server processes the request, performs the task, or fetches data.
+Example: A Zomato server might fetch restaurant data.
+4.Response
+The server sends back the requested data (or an error message if something went wrong).
+Example: A list of restaurants is sent back as a response to your client.
+
+The API server is created by developers or backend engineers in an organization. Here's how it works:
+Design the API-Developers decide what data or service the API will provide.
+Set Up a Server-Developers create a server (a computer or cloud instance) that will process API requests.
+Write Code for the API-Developers write code to handle requests and send back responses.
+Store Data-The server connects to a database where the required information is stored.
+Example: Restaurant details stored in a database.
+Make It Accessible:
+The server is made available on the internet through a URL or endpoint (like https://api.zomato.com/restaurants).
+
+In simple terms, developers build the API server, and DevOps engineers maintain it to make sure it works well.
+
+API call : An API call is when one system asks another system to do something using an API.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

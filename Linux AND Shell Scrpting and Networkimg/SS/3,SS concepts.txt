@@ -1,0 +1,354 @@
+                                     "Variables and data types"
+
+Concept  	       Explanation	                                                 Example
+
+Variable	       A container that holds data.	                             name="John"
+                                                                             echo $name # Outputs: John
+																 
+Variable Types	         All variables are text by default (even numbers).	     age="30"
+                                                                            echo $age # Outputs: 30
+                                                                            result=$((age + 5)) # Outputs: 35
+																			
+Assigning Values	     Use = to assign a value.	                            name="John"
+                                                                      echo "Hello, $name!" # Outputs: Hello, John!
+																	  
+																		
+Command Substitution	 Store command output in a variable.	             current_date=$(date)
+                                                                echo $current_date # Outputs: current date and time
+
+
+Readonly Variables	      Variables that cannot be changed.	             readonly pi=3.14
+                                                                         # pi=3.15 # Error
+																		 
+*When you set a variable normally, you can change its value later.
+But if you make it readonly, you can't change its value anymore.
+With readonly, you are locking the value of that variable. You can use the value,
+ but you can't change it after it's set.																		 
+																		 
+Unsetting Variables	                         Remove a variable using unset.	               name="John"
+                                                                                         unset name
+                                                                                  echo $name # Outputs nothing
+																				  
+Quoting Variables	     Single quotes don’t expand variables, double quotes do.	          skill="DevOps"
+                                        echo "I have $skill skills" # Outputs: I have DevOps skills
+                                         echo 'I have $skill skills' # Outputs: I have $skill skills
+
+										 
+Escaping Characters	              Use \ to include special characters.	                special_char="\$"
+                                                                        echo $special_char # Outputs: $
+---------------------------------------------------------------------------------------------------------
+                                 Reading User Input
+                            
+Option	                          Use	                     Example
+Basic	                        Get user input.	            read name
+-p	                          Show a prompt message.	    read -p "Enter name: " name
+-r	                       Treat \ as normal text.	         read -r input
+-t	                   Set a time limit (seconds).	         read -t 5 input(Waits 5 seconds for input, then moves on.)
+
+-s	                      Hide input (for passwords).	       read -s password
+
+1. read name 
+echo "hello, $name!"
+-------------------------------
+2. read -p "Enter your name: " name  
+echo "Hello, $name!"  
+-------------
+ It prompts the user to enter a name.
+🔹 Then, it prints "Hello, [name]!"
+=================================================================================================
+                                Conditional Statements
+1.if- Runs code if the condition is true. 		 
+2.else- Runs code if if condition is false.	
+3.elif - Adds another condition.
+
+num=10
+if [ $num -gt 10 ]; then
+    echo "Greater than 10"
+elif [ $num -eq 10 ]; then
+    echo "Equal to 10"
+else
+    echo "Less than 10"
+fi
+-------------------------------------------------------------------------------------
+                              Loops:
+1.For loop - Iterates over a list of items.
+# Example of a for loop
+
+for i in 1 2 3
+do
+    echo "Number: $i"
+done
+Number: 1
+Number: 2
+Number: 3
+---------------------------------------
+2.While loop = Repeats as long as the condition is true.
+# Example of a while loop
+counter=1
+
+while [ $counter -le 3 ]
+do
+    echo "Counter: $counter"
+    counter=$((counter + 1))  # Increment the counter
+done
+
+Counter: 1
+Counter: 2
+Counter: 3
+---------------------------------------------------------
+3. Until Loop - Repeats as long as the condition is false.
+# Example of an until loop
+counter=1
+until [ $counter -gt 3 ]
+do
+    echo "Counter: $counter"
+    counter=$((counter + 1))  # Increment the counter
+done
+Counter: 1
+Counter: 2
+Counter: 3
+-----------------------------------------------------
+Differences Between Loops:
+For Loop: Iterates over a fixed set of values.
+While Loop: Runs while the condition is true.
+Until Loop: Runs until the condition becomes true.
+-------------------------------------------------------------------------------------------------------
+Function: A block of code that runs when called.	
+greet() { echo "Hello!"; }	
+Calling a Function:Runs the function.	greet	  Prints "Hello!" when called.
+
+greet() {
+    echo "Hello!"
+}
+
+greet  # Runs the function
+--------------------------------------------------------------
+Function Arguments:Pass values to a function.	
+greet() {
+    echo "Hello, $1!"
+}
+
+greet "Kannan"  # Calling the function with "Kannan" as argument
+-------------
+Hello, Kannan!
+-----
+greet() → Defines the function.
+$1 → Represents the first argument ("Kannan").
+greet "Kannan" → Calls the function and passes "Kannan" as $1.
+---------------------------------------------------
+Function Output: Functions print results instead of returning them.
+	
+add() {
+
+    echo $(( $1 + $2 ))
+
+}
+result=$(add 10 20)
+echo "the result is $result"
+-------------------------------------------
+result=$(add 10 20) → Calls the function and stores the output in result.
+echo "the result is $result" → Prints the final result.
+--------------------------------------------------------------------------
+Global Variable:Can be used anywhere in the script.	
+Local Variable:Only works inside the function where it's created.		              
+
+name="kannan"
+
+greet() {
+    local greeting="hello"  # Local variable
+    echo "$greeting, $name"
+}
+
+greet  # Call the function
+
+echo "Outside fun: $name"       # Works (Global)
+echo "Outside fun: $greeting"   # Error! (greeting is local)
+--------------------------
+hello, kannan
+Outside fun: kannan
+./script.sh: line 10: greeting: unbound variable  # Error
+------------------------------------------------------------
+name="kannan" → Global variable (can be used anywhere). ✅
+greeting="hello" inside greet() → Local variable (only works inside the function). ✅
+echo "outside fun: $greeting, $name" → ❌ Error! $greeting is local and not available outside.
+--------------------------
+✅ Global variable (name) works everywhere.
+❌ Local variable (greeting) is not available outside the function.
+========================================================================================================
+String Manipulation in Shell Scripts
+Create a string: Use "" or '' (double or single quotes).
+Concatenation: Combine two or more strings.
+Substring extraction: Get a part of a string.
+Search & replace: Find and change a part of a string.
+#!/bin/bash
+
+# Define strings
+str1="kannan"
+str2="mali"
+
+# Concatenation
+echo "$str1$str2"   # Output: kannanmali
+
+# Search & Replace
+echo "${str1//a/@}"  # Replace 'a' with '@' → k@nn@n
+
+# Substring Extraction
+echo "${str1:0:3}"   # First 3 chars → kan
+
+# String Length
+echo "${#str1}"      # Length of 'kannan' → 6
+
+# Upper & Lower case
+echo "$str1" | tr a-z A-Z  # Upper → KANNAN
+echo "$str2" | tr A-Z a-z  # Lower → mali
+-------------------------------------------------------------------
+Array:
+Array = List of items: Store multiple values like a list of fruits.
+Index: Each item in the array has a number starting from 0. This number helps you access the item.
+Easy to manage: You can work with multiple items at once or access one at a time.
+1. Declaring and Using Arrays:
+#!/bin/bash
+
+# Declare an array with fruits
+fruits=("Apple" "Banana" "Orange")
+
+# Access items using index
+echo "${fruits[0]}"  # Output: Apple
+echo "${fruits[1]}"  # Output: Banana
+echo "${fruits[2]}"  # Output: Orange
+----------------
+2. Looping Through Arrays
+We can use loops to go through each item in an array.
+
+for fruit in "${fruits[@]}"; do
+    echo "$fruit"
+done
+
+Apple
+Banana
+Orange
+
+The @ means "all elements" of the array. 
+It allows you to access every item in the array during the loop or other operations.
+-----------------------------------------
+3. Modifying an Array
+#!/bin/bash
+
+# Declare an array
+fruits=("Apple" "Banana" "Orange")
+
+# Add item
+fruits+=("Grapes")                     
+
+# Change item
+fruits[1]="Mango"
+
+# Remove item
+unset fruits[0]
+
+# Print array
+echo "${fruits[@]}"
+
+o/p 
+Mango Orange Grapes
+Add (+=),
+Change ([index]),
+Remove (unset).
+-----------------------------------------------------------------
+Environment variables store system settings.
+
+echo "Your home directory is: $HOME"
+Your home directory is: /home/user
+
+1️⃣ $HOME is a predefined environment variable that stores the home directory of the current user.
+2️⃣ echo prints the value of $HOME.
+---------------------------------------------------
+Error Handling in Shell Scripts
+
+1. Exit Codes
+0 → Success ✅
+Any other number → Error ❌
+
+#!/bin/bash
+echo "Checking file..."
+cat myfile.txt  # Tries to read the file
+
+if [ $? -eq 0 ]; then
+    echo "File exists and is readable."
+else
+    echo "File does not exist or is not readable."
+fi
+---------------------
+✔️ If myfile.txt exists:
+Checking file...
+Hello, this is my file!  # File content
+File exists and is readable.
+------------------------------------
+❌ If myfile.txt does not exist:
+
+Checking file...
+cat: myfile.txt: No such file or directory
+File does not exist or is not readable.
+This helps in handling missing files in script
+==================================================================
+2. Error Messages
+They help users understand what went wrong.
+! (Exclamation Mark - Negate)
+Negates a condition.
+if ! [ -f file.txt ]; then echo "File missing"; fi
+This checks if the file does not exist.
+-----------------------------------------
+What is a Signal in Linux? Where Does It Come From?
+A signal in Linux is a message sent to a running program to tell it to stop, restart, or perform an action.
+
+Where Do Signals Come From?
+1️⃣ From the Keyboard (User Action) → Pressing Ctrl+C sends a signal.
+2️⃣ From the kill Command → Sending a signal to a process manually.
+3️⃣ From Other Programs → System tools or other software send signals.
+
+SIGINT → Sent when you press Ctrl+C (Interrupt)
+SIGKILL → Sent when you run kill -9 PID (Force Kill)
+
+Run this command in your terminal:
+sleep 100
+Now, press Ctrl+C
+
+The Linux kernel receives SIGINT. (Interrupt Signal) 
+The sleep program stops immediately.
+✔ Ctrl+C → Terminal sends SIGINT → Kernel delivers it → Program stops
+-----------------------------------------------
+Trap:trap catches signals and lets you control what happens.
+
+ If someone presses Ctrl+C, instead of stopping immediately, 
+ we can show a message or clean up files first.
+Example 1: Stop Ctrl+C from Working
+#!/bin/bash
+trap "echo 'You cannot use Ctrl+C!'" SIGINT
+echo "Running... (Try pressing Ctrl+C)"
+while true; do sleep 1; done
+---
+Normally, pressing Ctrl+C stops the script.
+Here, trap catches SIGINT and prints a message instead.
+So, Ctrl+C won’t stop the script!
+----
+o/p
+You cannot use Ctrl+C!
+================================================
+Example 2: Delete Files if Ctrl+C is Pressed
+
+
+#!/bin/bash
+trap "rm -rf *; echo 'Process interrupted, data cleared'; exit" SIGINT
+echo "Processing data..."
+sleep 10  # Simulating a long process
+echo "Data saved successfully."
+-------------------------------------
+If you press Ctrl+C, the script deletes all files (rm -rf *) before stopping.
+This prevents incomplete data from being saved.
+o/p
+Process interrupted, data cleared
+=========================================================
+💡 Think of trap like a security guard:
+
+Without trap → If you press Ctrl+C, the script stops immediately.
+With trap → The script catches Ctrl+C, does something first (like cleanup), then exits

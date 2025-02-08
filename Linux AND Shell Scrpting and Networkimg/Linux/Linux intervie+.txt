@@ -1,0 +1,101 @@
+
+1.How do you find out the current run-level of a Linux system?
+The runlevel command or who -r can be used to determine the current run-level.
+run-level 5  2025-01-27 12:34
+
+Runlevel 5: This is a mode where your system allows multiple users to log in and also shows a graphical interface (like Windows or macOS desktop). It’s the regular mode for using your computer with a graphical display.
+In short, runlevel 5 = normal computer use with a GUI.
+
+run-level 5: The system is currently in runlevel 5, which usually means it's in multi-user mode with a graphical user interface (GUI).
+The date and time show when the system switched to runlevel 5. So, if you see something like:
+=====================================================================================
+
+Find IP address: ifconfig or ip addr.
+Kill process: kill <PID>.
+chmod vs chown: chmod changes permissions, chown changes owner.
+Concatenate files: cat.
+sed: Used for search and replace in text.
+Check open ports: netstat or ss.
+Ping host: ping.
+apt-get vs apt: apt-get for package tasks, apt is simpler.
+Install package: apt install <package>.
+Update/Upgrade: apt update updates, apt upgrade upgrades.
+umask: Sets default file permissions.
+Uptime: uptime.
+System processes: top.
+Cron job: A scheduled task.
+Archive/Compression: tar for archive, gzip/bzip2 for compression.
+Monitor resources: top, free, or vmstat.
+===============================================
+1.Troubleshooting a slow Linux server:
+Check system resource usage with top or htop.
+Check disk usage with df -h and               du -sh.    Check for Disk Usage by Folder:
+
+
+Look for high CPU usage or processes with ps aux.
+Check logs in /var/log/ (e.g., syslog, dmesg).
+tail -f /var/log/syslog
+
+Restart a Service: If a service is not responding, restart it:
+sudo systemctl restart apache2
+
+
+
+------------------------------------------------
+2.Securing a Linux server:
+This keeps your system packages up to date with security fixes.
+Update System:
+sudo apt-get update && sudo apt-get upgrade
+-------------------
+Disable Unused Services:
+sudo systemctl disable apache2
+-----------------------
+Use a firewall: sudo ufw enable.
+Set up SSH key authentication instead of passwords.
+Disable root login via SSH in /etc/ssh/sshd_config.
+================================================================
+3.Monitoring server performance:
+Use top or htop to check CPU and memory usage.
+Use vmstat for system statistics.
+Use iostat for disk performance.
+Use netstat to check network connections.
+========================================
+4.Recovering from filesystem corruption:
+Run fsck to Fix Filesystem:
+sudo fsck /dev/sda1
+This checks and repairs filesystem issues on the partition /dev/sda1.
+---------
+Boot from a Live USB: If the system doesn't boot, use a live USB to repair the disk.
+
+Restore from Backup: If you have a backup, restore it:
+rsync -av /backup /home
+===============================
+Automating tasks:
+Using Cron (Scheduling Tasks): To run a script daily at 2 AM:
+========================
+Using systemd for Recurring Tasks: Create a service file (/etc/systemd/system/mytask.service):
+
+[Unit]
+Description=My recurring task
+
+[Service]
+ExecStart=/path/to/your/script.sh
+
+[Install]
+WantedBy=multi-user.target
+------------
+Then enable and start it:
+sudo systemctl enable mytask.service
+sudo systemctl start mytask.service
+=============================================
+Using at for One-Time Tasks: Schedule a task to run once at a specific time:
+
+echo "/path/to/your/script.sh" | at 2pm
+===========================================================
+
+
+
+
+
+
+

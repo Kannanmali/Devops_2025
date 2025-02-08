@@ -1,0 +1,313 @@
+Symbols:
+
+#	Hash / Pound	    Comment (ignored by shell)	                           # This is a comment
+-------------------------------------------
+= operator is used for assigning values to variables.
+name="John"
+No spaces around the = sign when assigning values to a variable.
+----------------------------------------------------------------
+$	Dollar              Use a variable	                          
+echo $HOME # Shows home directory
+----------------------------
+Parentheses () run commands in a temporary shell, 
+and $(...) captures the output of a command.
+
+eg:
+current_date=$(date)  # Capture the current date
+echo $current_date    # Outputs: current date and time
+The $(date) runs the date command and stores the result in current_date.
+----------------------------------------------------------------------
+()	Parentheses	Run in a new shell	(cd /tmp && ls) # Doesn't change current directory.
+1.Runs commands in a new shell.
+Changes in the new shell don’t affect the main shell.
+( ) - Subshell
+Runs commands in a new shell.
+After it's done, you go back to the original shell.
+You go to /tmp temporarily, run ls, but you stay in your current shell after it finishes.
+
+echo "Main Shell PID: $$"
+(cd /tmp; pwd) 
+pwd
+-------------------------------------------
+
+1.echo "Main Shell PID: $$"          Main Shell PID: 12345
+
+$$ shows the current shell's ID.
+
+2.(cd /tmp; pwd)                /tmp
+
+() creates a subshell, meaning everything inside runs in a separate shell.
+
+cd /tmp changes the directory inside the subshell only.
+
+pwd prints /tmp because we changed into it inside the subshell.
+
+After this line finishes, the subshell closes, and all changes inside are gone.
+
+3.pwd                /home/user  # (or wherever you originally were)
+
+This runs in the main shell, which was never affected by the subshell.
+
+So it prints the original directory (before the subshell ran).
+
+--------------------------------------------------------------------
+`command` or $(command)	Backticks / Command Substitution	Run a command inside another	
+echo $(date) # Shows current date
+
+It means you can run a command inside another command and use its output directly.
+
+$(date) runs the date command (which gives the current date).
+The output of date (e.g., "Thu Jan 31 14:42:42 UTC 2025") is then used by the echo command to display it.
+---------------------------------------
+The pipe (|) is used to send the output of one command directly into another command as input.
+ls | grep "file"
+ls generates a list of files, and that output is piped to grep, which searches for files with "file" in their name.
+-----------------------------------------------------------------------------
+*	Asterisk (Wildcard)	Matches all files	ls *.txt # Shows all .txt files
+This shows all .txt files in the current folder.
+-----------------------------------------------------------------------
+?	Question Mark (Wildcard)	Matches one character	ls file?.txt # Matches file1.txt, file2.txt
+? stands for any one character in the filename.
+This will match:
+file1.txt
+fileA.txt
+fileX.txt
+But it won't match:
+
+file10.txt (because ? only matches one character).
+----------------------------------------------------------------------
+square brackets [] are used for pattern matching to match one letter or number from a set.
+ls file[12].txt
+This will match:
+
+file1.txt
+file2.txt
+------------------------------------------------------------------------
+{} The curly braces {} allow you to group commands and execute them together, one after the other.
+{ echo "Hello"; echo "World"; }
+This will run both commands:
+echo "Hello"
+echo "World"
+----------------------------------------------------
+The > gretaer than redirection operator saves the output to a file, erasing its previous content.
+echo "Hello" > file.txt
+This will put "Hello" into file.txt, replacing anything that was there before.
+---------------------------------------------------------------------------
+>>	Double Greater Than (Redirection Operator)	Add output to a file	
+echo "World" >> file.txt # Adds to file
+Add "World" to the end of file.txt, keeping its existing content.
+---------------------------------------------------------------
+<	Less Than (Input Redirection)	
+takes content from a file and gives it as input to a command.
+ wc -l < file.txt
+wc -l: Counts the number of lines in a file.
+< file.txt: Means "use file.txt as input for the wc command."
+-----------------------------------------------------------
+<<	Here Document (Input Redirection)	Multi-line input	
+cat << EOF
+This is line 1
+This is line 2
+EOF
+o/p
+This is line 1
+This is line 2
+echo: Prints each line separately. You need to call echo multiple times to print multiple lines.
+
+cat << EOF: Allows you to input multiple lines in a block,
+ and the command automatically handles it as a single input.
+---------------------------------------------------------------------------------
+The <<< operator is used for single-line input to a command.
+
+wc -w <<< "Hello World"
+
+wc -w: This counts the number of words in the input.
+<<< "Hello World": This sends the text "Hello World" as input to the wc -w command.
+Result:
+The output will be 2 because there are 2 words in "Hello World".
+-----------------------------------------------------------------------------------------
+&&	AND Operator used to run the second command only if the first command succeeds.
+mkdir test && cd test
+mkdir test: Creates a folder named test.
+&&: If mkdir test is successful, then run the next command.
+cd test: Changes to the test folder.
+--------------------------------------------------------------
+The OR operator (||) in Linux runs the second command only if the first one fails.
+mkdir test || echo "Folder exists"
+If test is created, nothing happens.
+If test already exists, it prints "Folder exists."
+---------------------------------------------------------
+& Background Operator:
+sleep 10 &
+
+sleep 10 runs in the background.
+The terminal stays free for other commands.
+
+sleep 10 means:  pause execution for 10 seconds.
+echo "Hello"
+sleep 10
+echo "World"
+Prints "Hello"
+Waits 10 seconds
+Prints "World"
+
+-----------------------------------------------------------------
+ ; (Command Separator)
+Runs multiple commands one after another.
+echo "A"; echo "B"
+Both commands run in sequence.
+------------------------------------------------------------------
+$(( )) (Arithmetic Expansion Operator)-Used for math calculations in the shell.
+echo $((5 + 3))
+It calculates 5 + 3 and prints 8.
+----------------------------------------------------------------
+[ ] or [[ ]] (Test / Conditional Operator)
+ check conditions, like if a variable equals a value.
+a=5
+if [ "$a" -eq 5 ]; then echo "Yes"; fi
+-------------------------------------------------
+-eq (Equal) 
+-ne (Not Equal) if [ 5 -ne 3 ]; then echo "Yes"; fi
+-gt (Greater Than) if [ 5 -gt 3 ]; then echo "Yes"; fi
+-lt (Less Than) if [ 3 -lt 5 ]; then echo "Yes"; fi
+----------------------------------------------------------------
+-f (File Test) Checks if a file exists. if [ -f file.txt ]; then echo "File found"; fi
+File found = o/p
+-d (Directory Test)-if [ -d myfolder ]; then echo "Folder exists"; fi
+
+-z Checks if a string is empty. if [ -z "$name" ]; then echo "Empty"; fi
+-------------------
+" " (Double Quotes)
+Keeps spaces in a string.
+echo "Hello World"
+Hello World
+Without quotes, extra spaces are ignored. With quotes, the spaces are shown exactly as typed.
+-----------------------------------------------------------------------------------------  
+' ' (Single Quotes - String)
+Treats everything inside as plain text, including special characters.
+echo 'This is $HOME'
+o/p This is $HOME
+The $HOME is not expanded because it's inside single quotes.
+-----------------------------------------------------------
+\ (Backslash - Escape Character)
+Allows you to use special characters literally by escaping them.
+echo \"Hello\"
+o/p "Hello"
+The backslash escapes the double quotes, so they are printed.
+-----------------------------------------------------------------------------
+$? (Last Command Exit Status)
+Shows if the last command was successful (0 = success).
+echo "Hello"
+echo $?  # Prints 0 (success)
+If the last command was successful, it prints 0.
+
+
+------------------------------------------------
+$# (Number of Arguments)
+Shows the number of arguments passed to the script.
+
+bash script.sh arg1 arg2
+echo $#  # Prints 2
+
+You passed 3 arguments
+----------------------------------------
+$@ (All Arguments - Individually)
+Shows all arguments passed to the script, individually.
+bash script.sh arg1 arg2
+echo "$@"  # Prints arg1 arg2
+---------------------------------
+$* (All Arguments - As a String)
+Print all arguments as one string.
+
+bash script.sh arg1 arg2
+echo "$*"  # Prints arg1 arg2
+----------------------------------
+$0 (Script Name)
+Print the name of the script.
+echo "$0"  # Prints script.sh
+------------------------------------
+$1, $2, ... (Positional Parameters)
+Print the first argument.
+bash script.sh arg1
+echo "$1"  # Prints arg1
+-----------------------------------------------------------------------------------------
+export (Export Keyword)- Makes a variable available to other scripts.
+export MY_VAR="hello"
+echo $MY_VAR  # Output: hello
+---------------------------
+unset- Removes a variable.
+
+unset MY_VAR
+echo $MY_VAR  # Output: (empty, because MY_VAR is deleted)
+-------------------------------------------------
+source or . (Source / Dot Operator)
+Runs a script inside the current shell.
+source myscript.sh  # Runs the script in the current shell
+----------------------------------------------
+exec (Exec Keyword)
+Replaces the current shell with a command.
+exec ls  # Replaces the terminal with the ls command (shows directory contents)
+-----------------------------
+: Does nothing (empty command).
+:  # Does nothing, no output
+------------------------
+trap- It handles something special when you press Ctrl+C.
+When you press Ctrl+C, it shows the message "Interrupted!"
+trap "echo Interrupted!" SIGINT
+How it works: Press Ctrl+C to see the output Interrupted!
+
+-----------------------------------
+! (Exclamation Mark - Negate)
+Negates a condition.
+if ! [ -f file.txt ]; then echo "File missing"; fi
+This checks if the file does not exist.
+
+^ (Caret - Regex)
+Matches the start of a line in regular expressions.
+grep "^Hello" file.txt
+This finds lines that start with Hello in file.txt.
+
+$ (Dollar Sign - Regex)
+Matches the end of a line in regular expressions.
+grep "World$" file.txt
+This finds lines that end with World in file.txt.
+
+~ (Tilde - Home Directory)
+Shortcut to your home directory.
+cd ~
+This changes the current directory to your home directory.
+
+- (Hyphen - Previous Directory)
+Shortcut to your previous directory.
+cd -
+This changes the current directory to the last one you were in.
+
+-------------------------------------------------------------
+
+  mkdir /opt/scripts
+cd /opt/scripts
+ yum install vim -y
+ 
+ To use this script:
+
+Save it to a file (e.g., greeting_script.sh).
+Make it executable using chmod +x greeting_script.sh.
+Run the script using ./greeting_script.sh.   or sh first.sh
+
+
+--------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
